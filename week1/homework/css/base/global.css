@@ -1,0 +1,17 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 18rem 1fr;
+  margin-top: 6rem;
+}
+
+.sidebar {
+  background-color: var(--gray-50);
+  border-right: 1px solid var(--gray-200);
+  height: 100%;
+}
+
+main {
+  min-width: 0;
+  min-height: calc(100dvh - 6rem);
+  padding: 4rem;
+}

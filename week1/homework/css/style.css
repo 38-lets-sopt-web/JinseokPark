@@ -1,4 +1,6 @@
 @import "base/reset.css";
 @import "base/theme.css";
+@import "base/global.css";
 
 @import "sections/header.css";
+@import "sections/side-nav.css";
