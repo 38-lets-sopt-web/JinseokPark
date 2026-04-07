@@ -11,6 +11,9 @@
 }
 
 main {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
   min-width: 0;
   min-height: calc(100dvh - 6rem);
   padding: 4rem;
