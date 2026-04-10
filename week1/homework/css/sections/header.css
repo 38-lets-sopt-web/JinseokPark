@@ -64,6 +64,7 @@ header nav {
   height: 3rem;
   border-radius: 50%;
   background-color: var(--blue-500);
+  transition: transform 0.2s ease-in-out;
 }
 
 .header__social i {
@@ -74,6 +75,7 @@ header nav {
 .header__social a:hover {
   background-color: var(--blue-50);
   border: 1px solid var(--blue-500);
+  transform: translateY(-0.2rem);
 }
 
 .header__social a:hover i {
