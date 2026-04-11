@@ -1,0 +1,33 @@
+#message {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#message h2 {
+  font-size: 2rem;
+}
+
+.message__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3.5rem 2rem;
+  background-color: var(--blue-50);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px var(--gray-200);
+}
+
+.message__content p {
+  font-size: 1.5rem;
+}
+
+.message__content p::before {
+  content: "🏡";
+  margin-right: 0.8rem;
+}
+
+.message__content p::after {
+  content: "🍀";
+  margin-left: 0.8rem;
+}

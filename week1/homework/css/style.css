@@ -1,0 +1,10 @@
+@import "base/reset.css";
+@import "base/theme.css";
+@import "base/global.css";
+
+@import "sections/header.css";
+@import "sections/side-nav.css";
+@import "sections/gallery.css";
+@import "sections/like.css";
+@import "sections/interests.css";
+@import "sections/message.css";
