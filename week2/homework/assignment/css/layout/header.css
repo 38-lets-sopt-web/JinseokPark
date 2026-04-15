@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 8rem;
+  background-color: var(--blue-500);
+  color: var(--white);
+  padding: 0 2rem;
+}
+
+.header__column {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__logo {
+  width: auto;
+  height: 6.5rem;
+}
+
+.header__title {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.header__info {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+  .header__refresh-button,
+  .header__info {
+    display: none;
+  }
+
+  .header__title {
+    font-size: 2rem;
+  }
+}

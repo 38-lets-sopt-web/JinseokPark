@@ -1,2 +1,5 @@
 @import "base/reset.css";
 @import "base/theme.css";
+@import "base/global.css";
+
+@import "layout/header.css";
