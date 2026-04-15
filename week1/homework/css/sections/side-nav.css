@@ -1,0 +1,55 @@
+.sidebar__nav {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 10rem;
+  margin-top: 4rem;
+}
+
+.sidebar__nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  width: 14rem;
+  border-radius: 10px;
+  background-color: var(--white);
+}
+
+.sidebar__nav li {
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.sidebar__nav a {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 1rem;
+}
+
+.sidebar__nav li:hover a {
+  color: var(--white);
+}
+
+.sidebar__nav li:hover {
+  border-radius: 12px;
+  background-color: var(--blue-500);
+}
+
+.sidebar__nav li:first-child:hover {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.sidebar__nav li:last-child:hover {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+#gallery,
+#like,
+#interests,
+#message {
+  scroll-margin-top: 10rem;
+}
