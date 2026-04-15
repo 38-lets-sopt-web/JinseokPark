@@ -95,6 +95,50 @@
           </div>
         </form>
       </section>
+
+      <section class="history">
+        <header class="history__header">
+          <select class="history__sort" id="sort">
+            <option value="">전체</option>
+            <option value="descending">날짜 내림차순</option>
+            <option value="ascending">날짜 오름차순</option>
+          </select>
+
+          <div class="history__actions">
+            <button
+              type="button"
+              class="history__button history__button--delete"
+            >
+              선택삭제
+            </button>
+            <button type="button" class="history__button history__button--add">
+              추가
+            </button>
+          </div>
+        </header>
+
+        <div class="history__table-wrapper">
+          <table class="history__table">
+            <thead>
+              <tr>
+                <th>
+                  <input
+                    type="checkbox"
+                    id="check-all"
+                    class="history__checkbox"
+                  />
+                </th>
+                <th>제목</th>
+                <th>금액</th>
+                <th>날짜</th>
+                <th>카테고리</th>
+                <th>결제수단</th>
+              </tr>
+            </thead>
+            <tbody id="history-list"></tbody>
+          </table>
+        </div>
+      </section>
     </main>
     <script type="module" src="js/main.js"></script>
   </body>

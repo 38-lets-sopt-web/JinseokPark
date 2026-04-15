@@ -1,5 +1,6 @@
 .filter {
   width: 80vw;
+  max-width: 1000px;
   padding: 2.5rem;
   border-radius: 8px;
   border: 1px solid var(--gray-200);
@@ -60,7 +61,7 @@
 
 .filter__button {
   padding: 0.8rem;
-  border: 1px solid transparent;
+  border: 1px solid var(--blue-500);
   border-radius: 0.5rem;
   background-color: var(--blue-500);
   color: var(--white);
@@ -72,7 +73,6 @@
 
 .filter__button:hover {
   background-color: var(--gray-50);
-  border-color: var(--blue-500);
   color: var(--blue-500);
 }
 
