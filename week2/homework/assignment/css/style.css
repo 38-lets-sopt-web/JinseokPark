@@ -3,3 +3,5 @@
 @import "base/global.css";
 
 @import "layout/header.css";
+
+@import "components/filter.css";

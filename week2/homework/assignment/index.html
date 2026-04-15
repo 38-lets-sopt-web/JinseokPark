@@ -37,6 +37,65 @@
         <p class="header__info">🏡 LET'S SOPT 38기 WEB 박진석</p>
       </div>
     </header>
+    <main>
+      <section class="filter">
+        <h2 class="filter__title">검색 필터</h2>
+
+        <form class="filter__form">
+          <div class="filter__field filter__field--title">
+            <label class="filter__label" for="title">제목</label>
+            <input
+              type="text"
+              class="filter__input"
+              id="title"
+              placeholder="내역을 입력하세요"
+            />
+          </div>
+
+          <div class="filter__field filter__field--type">
+            <label class="filter__label" for="type">유형</label>
+            <select class="filter__select" id="type">
+              <option value="">전체</option>
+              <option value="income">수입</option>
+              <option value="expense">지출</option>
+            </select>
+          </div>
+
+          <div class="filter__field filter__field--category">
+            <label class="filter__label" for="category">카테고리</label>
+            <select class="filter__select" id="category">
+              <option value="">전체</option>
+              <option value="food">식비</option>
+              <option value="salary">월급</option>
+              <option value="culture">문화</option>
+              <option value="transport">교통</option>
+              <option value="living">생활</option>
+              <option value="etc">기타</option>
+            </select>
+          </div>
+
+          <div class="filter__field filter__field--payment">
+            <label class="filter__label" for="payment">결제수단</label>
+            <select class="filter__select" id="payment">
+              <option value="">전체</option>
+              <option value="cash">현금</option>
+              <option value="credit-card">신용카드</option>
+              <option value="check-card">체크카드</option>
+              <option value="etc">기타</option>
+            </select>
+          </div>
+
+          <div class="filter__actions">
+            <button type="submit" class="filter__button filter__button--submit">
+              적용
+            </button>
+            <button type="button" class="filter__button filter__button--reset">
+              초기화
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
     <script type="module" src="js/main.js"></script>
   </body>
 </html>
