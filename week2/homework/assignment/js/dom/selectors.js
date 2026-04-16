@@ -5,7 +5,9 @@ export const dom = {
   },
   history: {
     addBtn: document.querySelector(".history__button--add"),
+    deleteBtn: document.querySelector(".history__button--delete"),
     list: document.getElementById("history-list"),
+    allCheckbox: document.getElementById("check-all"),
   },
   modal: {
     overlay: document.getElementById("add-modal"),
