@@ -41,20 +41,20 @@
       <section class="filter">
         <h2 class="filter__title">검색 필터</h2>
 
-        <form class="filter__form">
+        <form class="filter__form" id="filter-form">
           <div class="filter__field filter__field--title">
-            <label class="filter__label" for="title">제목</label>
+            <label class="filter__label" for="filter-title">제목</label>
             <input
               type="text"
               class="filter__input"
-              id="title"
+              id="filter-title"
               placeholder="내역을 입력하세요"
             />
           </div>
 
           <div class="filter__field filter__field--type">
-            <label class="filter__label" for="type">유형</label>
-            <select class="filter__select" id="type">
+            <label class="filter__label" for="filter-type">유형</label>
+            <select class="filter__select" id="filter-type">
               <option value="">전체</option>
               <option value="income">수입</option>
               <option value="expense">지출</option>
@@ -62,8 +62,8 @@
           </div>
 
           <div class="filter__field filter__field--category">
-            <label class="filter__label" for="category">카테고리</label>
-            <select class="filter__select" id="category">
+            <label class="filter__label" for="filter-category">카테고리</label>
+            <select class="filter__select" id="filter-category">
               <option value="">전체</option>
               <option value="food">식비</option>
               <option value="salary">월급</option>
@@ -75,8 +75,8 @@
           </div>
 
           <div class="filter__field filter__field--payment">
-            <label class="filter__label" for="payment">결제수단</label>
-            <select class="filter__select" id="payment">
+            <label class="filter__label" for="filter-payment">결제수단</label>
+            <select class="filter__select" id="filter-payment">
               <option value="">전체</option>
               <option value="cash">현금</option>
               <option value="credit-card">신용카드</option>
