@@ -9,6 +9,7 @@ export const dom = {
     list: document.getElementById("history-list"),
     allCheckbox: document.getElementById("check-all"),
     totalAmount: document.getElementById("total-amount"),
+    historySort: document.getElementById("history-sort"),
   },
   modal: {
     overlay: document.getElementById("add-modal"),

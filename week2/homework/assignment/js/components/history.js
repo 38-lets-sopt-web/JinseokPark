@@ -1,9 +1,10 @@
 import { dom } from "../dom/selectors.js";
 import { getData, setData } from "../store/storage.js";
 import { renderTable } from "./table.js";
+import { getFilterValues } from "../utils/filter-value.js";
 
 export const history = () => {
-  const { allCheckbox, deleteBtn, list } = dom.history;
+  const { allCheckbox, deleteBtn, list, historySort } = dom.history;
 
   allCheckbox.addEventListener("change", (e) => {
     const checkboxes = list.querySelectorAll(".history__checkbox");
@@ -46,5 +47,25 @@ export const history = () => {
     renderTable();
 
     if (allCheckbox) allCheckbox.checked = false;
+  });
+
+  historySort.addEventListener("change", (e) => {
+    const sortType = e.target.value;
+    const currentData = getData();
+    const currentFilter = getFilterValues();
+
+    if (!sortType) {
+      renderTable(currentFilter);
+      return;
+    }
+
+    const sortedData = currentData.sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+
+      return sortType === "ascending" ? dateA - dateB : dateB - dateA;
+    });
+
+    renderTable(currentFilter, sortedData);
   });
 };

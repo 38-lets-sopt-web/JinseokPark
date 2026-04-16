@@ -2,8 +2,8 @@ import { dom } from "../dom/selectors.js";
 import { getData, setData } from "../store/storage.js";
 import { PAYMENT_MAP, CATEGORY_MAP } from "../constants/options.js";
 
-export const renderTable = (filterValues = null) => {
-  let data = getData();
+export const renderTable = (filterValues = null, sortedData = null) => {
+  let data = sortedData || getData();
   const { list, totalAmount } = dom.history;
 
   if (filterValues) {
