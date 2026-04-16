@@ -1,17 +1,11 @@
-import { header } from "./features/header.js";
-import { modal } from "./features/modal.js";
-import { renderTable } from "./features/table.js";
 import { initData } from "./store/storage.js";
-import { filter } from "./features/filter.js";
-import { history } from "./features/history.js";
+import { renderApp } from "./app/render.js";
+import { setEvents } from "./app/event.js";
 
 const init = () => {
   initData();
-  renderTable();
-  header();
-  modal();
-  filter();
-  history();
+  renderApp();
+  setEvents();
 };
 
 document.addEventListener("DOMContentLoaded", init);
