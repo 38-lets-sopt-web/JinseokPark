@@ -2,6 +2,7 @@ import { dom } from "../dom/selectors.js";
 import { getData, setData } from "../store/storage.js";
 import { renderTable } from "./table.js";
 import { getFilterValues } from "../utils/filter-value.js";
+import { openDetailModal } from "./modal.js";
 
 export const history = () => {
   const { allCheckbox, deleteBtn, list, historySort } = dom.history;
@@ -67,5 +68,18 @@ export const history = () => {
     });
 
     renderTable(currentFilter, sortedData);
+  });
+
+  list.addEventListener("click", (e) => {
+    const targetCell = e.target.closest("td");
+    if (targetCell.cellIndex === 0) return;
+
+    const row = targetCell.closest(".history__row");
+    const id = Number(row.dataset.id);
+
+    const item = getData().find((data) => data.id === id);
+    if (item) {
+      openDetailModal(item);
+    }
   });
 };

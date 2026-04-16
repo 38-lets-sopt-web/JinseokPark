@@ -14,6 +14,23 @@ export const dom = {
   modal: {
     overlay: document.getElementById("add-modal"),
     form: document.getElementById("add-form"),
-    closeBtn: document.querySelector(".modal__close"),
+    closeBtns: document.querySelectorAll(".modal__close"),
+
+    inputs: {
+      title: document.getElementById("modal-title"),
+      amount: document.getElementById("modal-amount"),
+      type: document.getElementById("modal-type"),
+      date: document.getElementById("modal-date"),
+      category: document.getElementById("modal-category"),
+      payment: document.getElementById("modal-payment"),
+    },
+
+    details: {
+      title: document.getElementById("detail-title"),
+      amount: document.getElementById("detail-amount"),
+      date: document.getElementById("detail-date"),
+      category: document.getElementById("detail-category"),
+      payment: document.getElementById("detail-payment"),
+    },
   },
 };

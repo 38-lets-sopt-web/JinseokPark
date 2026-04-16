@@ -42,6 +42,7 @@ export const renderTable = (filterValues = null, sortedData = null) => {
   data.forEach((item) => {
     const tr = document.createElement("tr");
     tr.className = "history__row";
+    tr.dataset.id = item.id;
 
     const isIncome = item.type === "income";
     const amountClass = isIncome ? "amount-income" : "amount-expense";

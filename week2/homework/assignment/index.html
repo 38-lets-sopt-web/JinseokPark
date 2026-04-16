@@ -147,7 +147,7 @@
       </section>
 
       <div class="modal-overlay" id="add-modal">
-        <div class="modal">
+        <div class="modal modal--add">
           <div class="modal__header">
             <h3 class="modal__title">내역 추가</h3>
             <button type="button" class="modal__close" aria-label="모달창 닫기">
@@ -227,6 +227,30 @@
               </button>
             </div>
           </form>
+        </div>
+
+        <div class="modal modal--detail">
+          <div class="modal__header">
+            <h3 class="modal__title">내역 상세</h3>
+            <button type="button" class="modal__close">✕</button>
+          </div>
+          <div class="modal__content">
+            <div class="modal__info">
+              <strong>제목:</strong> <span id="detail-title"></span>
+            </div>
+            <div class="modal__info">
+              <strong>금액:</strong> <span id="detail-amount"></span>
+            </div>
+            <div class="modal__info">
+              <strong>날짜:</strong> <span id="detail-date"></span>
+            </div>
+            <div class="modal__info">
+              <strong>카테고리:</strong> <span id="detail-category"></span>
+            </div>
+            <div class="modal__info">
+              <strong>결제수단:</strong> <span id="detail-payment"></span>
+            </div>
+          </div>
         </div>
       </div>
     </main>
