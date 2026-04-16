@@ -103,18 +103,16 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 1.2rem;
+  color: var(--gray-800);
 }
 
 .history__table th {
-  font-size: 1.2rem;
   font-weight: 600;
-  color: var(--gray-800);
 }
 
 .history__table td {
-  font-size: 1.2rem;
   font-weight: 500;
-  color: var(--gray-800);
 }
 
 .history__table td.amount-income {
