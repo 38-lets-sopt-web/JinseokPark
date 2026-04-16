@@ -11,4 +11,10 @@ export const modal = () => {
   closeBtn.addEventListener("click", () => {
     overlay.classList.remove("is-active");
   });
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+      overlay.classList.remove("is-active");
+    }
+  });
 };
