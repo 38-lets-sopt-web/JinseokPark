@@ -45,7 +45,8 @@ export const modal = () => {
     const newData = {
       id: Date.now(),
       title,
-      amount: type === "expense" ? -amount : amount,
+      amount: Number(amount),
+      type,
       date,
       category: CATEGORY_MAP[category],
       payment: PAYMENT_MAP[payment],

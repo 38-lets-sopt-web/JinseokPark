@@ -5,7 +5,8 @@ export const expenses = [
     date: "2026-04-01",
     category: "식비",
     payment: "신용카드",
-    amount: -4500,
+    amount: 4500,
+    type: "expense",
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const expenses = [
     category: "월급",
     payment: "현금",
     amount: 300000,
+    type: "income",
   },
   {
     id: 3,
@@ -21,7 +23,8 @@ export const expenses = [
     date: "2026-04-03",
     category: "식비",
     payment: "체크카드",
-    amount: -2500,
+    amount: 2500,
+    type: "expense",
   },
   {
     id: 4,
@@ -29,7 +32,8 @@ export const expenses = [
     date: "2026-04-03",
     category: "문화",
     payment: "신용카드",
-    amount: -18000,
+    amount: 18000,
+    type: "expense",
   },
   {
     id: 5,
@@ -37,7 +41,8 @@ export const expenses = [
     date: "2026-04-05",
     category: "교통",
     payment: "기타",
-    amount: -1400,
+    amount: 1400,
+    type: "expense",
   },
   {
     id: 6,
@@ -46,6 +51,7 @@ export const expenses = [
     category: "기타",
     payment: "현금",
     amount: 25000,
+    type: "income",
   },
   {
     id: 7,
@@ -53,7 +59,8 @@ export const expenses = [
     date: "2026-04-06",
     category: "문화",
     payment: "신용카드",
-    amount: -17000,
+    amount: 17000,
+    type: "expense",
   },
   {
     id: 8,
@@ -61,7 +68,8 @@ export const expenses = [
     date: "2026-04-07",
     category: "식비",
     payment: "체크카드",
-    amount: -42000,
+    amount: 42000,
+    type: "expense",
   },
   {
     id: 9,
@@ -69,7 +77,8 @@ export const expenses = [
     date: "2026-04-08",
     category: "생활",
     payment: "신용카드",
-    amount: -120000,
+    amount: 120000,
+    type: "expense",
   },
   {
     id: 10,
@@ -78,6 +87,7 @@ export const expenses = [
     category: "월급",
     payment: "현금",
     amount: 150000,
+    type: "income",
   },
   {
     id: 11,
@@ -85,7 +95,8 @@ export const expenses = [
     date: "2026-04-10",
     category: "교통",
     payment: "신용카드",
-    amount: -8500,
+    amount: 8500,
+    type: "expense",
   },
   {
     id: 12,
@@ -93,6 +104,7 @@ export const expenses = [
     date: "2026-04-10",
     category: "생활",
     payment: "체크카드",
-    amount: -5000,
+    amount: 5000,
+    type: "expense",
   },
 ];

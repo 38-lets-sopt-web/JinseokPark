@@ -10,9 +10,7 @@ export const renderTable = (filterValues = null) => {
     data = data.filter((item) => {
       const matchTitle = item.title.toLowerCase().includes(filterValues.title);
 
-      const matchType =
-        !filterValues.type ||
-        (filterValues.type === "income" ? item.amount > 0 : item.amount < 0);
+      const matchType = !filterValues.type || item.type === filterValues.type;
 
       const matchCategory =
         !filterValues.category ||
@@ -26,7 +24,9 @@ export const renderTable = (filterValues = null) => {
     });
   }
 
-  const total = data.reduce((acc, cur) => acc + cur.amount, 0);
+  const total = data.reduce((acc, cur) => {
+    return cur.type === "income" ? acc + cur.amount : acc - cur.amount;
+  }, 0);
 
   list.innerHTML = "";
 
@@ -43,12 +43,14 @@ export const renderTable = (filterValues = null) => {
     const tr = document.createElement("tr");
     tr.className = "history__row";
 
-    const amountClass = item.amount > 0 ? "amount-income" : "amount-expense";
+    const isIncome = item.type === "income";
+    const amountClass = isIncome ? "amount-income" : "amount-expense";
+    const sign = isIncome ? "+" : "-";
 
     tr.innerHTML = `
         <td><input type="checkbox" class="history__checkbox" data-id="${item.id}" /></td>
         <td>${item.title}</td>
-        <td class="${amountClass}">${item.amount}</td>
+        <td class="${amountClass}">${sign}${item.amount.toLocaleString()}</td>
         <td>${item.date}</td>
         <td>${item.category}</td>
         <td>${item.payment}</td>
@@ -58,7 +60,8 @@ export const renderTable = (filterValues = null) => {
   });
 
   if (totalAmount) {
-    totalAmount.textContent = `${total.toLocaleString()}원`;
+    const totalSign = total > 0 ? "+" : "";
+    totalAmount.textContent = `${totalSign}${total.toLocaleString()}원`;
 
     totalAmount.classList.remove("amount-income", "amount-expense");
 
