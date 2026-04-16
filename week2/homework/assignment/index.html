@@ -52,7 +52,7 @@
             />
           </div>
 
-          <div class="filter__field filter__field--type">
+          <div class="filter__field">
             <label class="filter__label" for="filter-type">유형</label>
             <select class="filter__select" id="filter-type">
               <option value="">전체</option>
@@ -61,7 +61,7 @@
             </select>
           </div>
 
-          <div class="filter__field filter__field--category">
+          <div class="filter__field">
             <label class="filter__label" for="filter-category">카테고리</label>
             <select class="filter__select" id="filter-category">
               <option value="">전체</option>
@@ -74,7 +74,7 @@
             </select>
           </div>
 
-          <div class="filter__field filter__field--payment">
+          <div class="filter__field">
             <label class="filter__label" for="filter-payment">결제수단</label>
             <select class="filter__select" id="filter-payment">
               <option value="">전체</option>
@@ -121,18 +121,18 @@
           <table class="history__table">
             <thead>
               <tr>
-                <th>
+                <th scope="col">
                   <input
                     type="checkbox"
                     id="check-all"
                     class="history__checkbox"
                   />
                 </th>
-                <th>제목</th>
-                <th>금액</th>
-                <th>날짜</th>
-                <th>카테고리</th>
-                <th>결제수단</th>
+                <th scope="col">제목</th>
+                <th scope="col">금액</th>
+                <th scope="col">날짜</th>
+                <th scope="col">카테고리</th>
+                <th scope="col">결제수단</th>
               </tr>
             </thead>
             <tbody id="history-list"></tbody>
@@ -174,6 +174,7 @@
                 type="number"
                 id="modal-amount"
                 placeholder="금액을 입력하세요"
+                min="0"
                 required
               />
             </div>
@@ -232,7 +233,9 @@
         <div class="modal modal--detail">
           <div class="modal__header">
             <h3 class="modal__title">내역 상세</h3>
-            <button type="button" class="modal__close">✕</button>
+            <button type="button" class="modal__close" aria-label="모달창 닫기">
+              ✕
+            </button>
           </div>
           <div class="modal__content">
             <div class="modal__info">
