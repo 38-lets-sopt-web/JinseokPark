@@ -1,12 +1,12 @@
 import { dom } from "../dom/selectors.js";
 
 export const getFilterValues = () => {
-  const { form } = dom.filter;
+  const { inputs } = dom.filter;
 
   return {
-    title: form.querySelector("#filter-title").value.toLowerCase(),
-    type: form.querySelector("#filter-type").value,
-    category: form.querySelector("#filter-category").value,
-    payment: form.querySelector("#filter-payment").value,
+    title: inputs.title.value.toLowerCase().trim(),
+    type: inputs.type.value,
+    category: inputs.category.value,
+    payment: inputs.payment.value,
   };
 };

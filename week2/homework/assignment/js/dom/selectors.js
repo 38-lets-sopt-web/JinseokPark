@@ -2,6 +2,12 @@ export const dom = {
   filter: {
     form: document.getElementById("filter-form"),
     resetBtn: document.querySelector(".filter__button--reset"),
+    inputs: {
+      title: document.getElementById("filter-title"),
+      type: document.getElementById("filter-type"),
+      category: document.getElementById("filter-category"),
+      payment: document.getElementById("filter-payment"),
+    },
   },
   history: {
     addBtn: document.querySelector(".history__button--add"),

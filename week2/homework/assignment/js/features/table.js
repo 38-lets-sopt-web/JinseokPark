@@ -1,6 +1,7 @@
 import { dom } from "../dom/selectors.js";
 import { getData, setData } from "../store/storage.js";
 import { PAYMENT_MAP, CATEGORY_MAP } from "../constants/options.js";
+import { formatAmount } from "../utils/format-amount.js";
 
 export const renderTable = (filterValues = null, sortedData = null) => {
   let data = sortedData || getData();
@@ -44,14 +45,12 @@ export const renderTable = (filterValues = null, sortedData = null) => {
     tr.className = "history__row";
     tr.dataset.id = item.id;
 
-    const isIncome = item.type === "income";
-    const amountClass = isIncome ? "amount-income" : "amount-expense";
-    const sign = isIncome ? "+" : "-";
+    const { className, formattedAmount } = formatAmount(item.amount, item.type);
 
     tr.innerHTML = `
         <td><input type="checkbox" class="history__checkbox" data-id="${item.id}" /></td>
         <td>${item.title}</td>
-        <td class="${amountClass}">${sign}${item.amount.toLocaleString()}</td>
+        <td class="${className}">${formattedAmount}</td>
         <td>${item.date}</td>
         <td>${item.category}</td>
         <td>${item.payment}</td>

@@ -2,6 +2,7 @@ import { CATEGORY_MAP, PAYMENT_MAP } from "../constants/options.js";
 import { dom } from "../dom/selectors.js";
 import { getData, setData } from "../store/storage.js";
 import { renderTable } from "./table.js";
+import { formatAmount } from "../utils/format-amount.js";
 
 const { overlay, form, closeBtns } = dom.modal;
 
@@ -17,11 +18,10 @@ export const openAddModal = () => {
 
 export const openDetailModal = (item) => {
   const { details } = dom.modal;
-  const isIncome = item.type === "income";
-  const sign = isIncome ? "+" : "-";
+  const { formattedAmount } = formatAmount(item.amount, item.type);
 
   details.title.textContent = item.title;
-  details.amount.textContent = `${sign}${item.amount.toLocaleString()}원`;
+  details.amount.textContent = `${formattedAmount}원`;
   details.date.textContent = item.date;
   details.category.textContent = item.category;
   details.payment.textContent = item.payment;
