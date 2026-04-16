@@ -1,9 +1,9 @@
-import { header } from "./components/header.js";
-import { modal } from "./components/modal.js";
-import { renderTable } from "./components/table.js";
+import { header } from "./features/header.js";
+import { modal } from "./features/modal.js";
+import { renderTable } from "./features/table.js";
 import { initData } from "./store/storage.js";
-import { filter } from "./components/filter.js";
-import { history } from "./components/history.js";
+import { filter } from "./features/filter.js";
+import { history } from "./features/history.js";
 
 const init = () => {
   initData();
