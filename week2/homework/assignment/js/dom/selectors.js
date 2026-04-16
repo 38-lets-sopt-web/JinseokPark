@@ -8,6 +8,7 @@ export const dom = {
     deleteBtn: document.querySelector(".history__button--delete"),
     list: document.getElementById("history-list"),
     allCheckbox: document.getElementById("check-all"),
+    totalAmount: document.getElementById("total-amount"),
   },
   modal: {
     overlay: document.getElementById("add-modal"),

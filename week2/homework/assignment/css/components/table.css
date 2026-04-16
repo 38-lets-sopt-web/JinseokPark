@@ -117,6 +117,14 @@
   color: var(--gray-800);
 }
 
+.history__table td.amount-income {
+  color: var(--blue-500);
+}
+
+.history__table td.amount-expense {
+  color: var(--red-500);
+}
+
 .history__checkbox {
   width: 1.2rem;
   height: 1.2rem;
@@ -124,5 +132,9 @@
 }
 
 .history__table tbody tr:hover {
+  background-color: var(--blue-50);
+}
+
+.history__total-row {
   background-color: var(--blue-50);
 }
