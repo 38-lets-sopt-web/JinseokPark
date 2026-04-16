@@ -18,7 +18,8 @@ export const dom = {
     historySort: document.getElementById("history-sort"),
   },
   modal: {
-    overlay: document.getElementById("add-modal"),
+    addDialog: document.getElementById("add-dialog"),
+    detailDialog: document.getElementById("detail-dialog"),
     form: document.getElementById("add-form"),
     closeBtns: document.querySelectorAll(".modal__close"),
 

@@ -4,20 +4,19 @@ import { getData, setData } from "../store/storage.js";
 import { renderTable } from "./table.js";
 import { formatAmount } from "../utils/format-amount.js";
 
-const { overlay, form, closeBtns } = dom.modal;
+const { addDialog, detailDialog, form, closeBtns, details, inputs } = dom.modal;
 
 export const closeModal = () => {
-  overlay.classList.remove("is-active", "is-add", "is-detail");
+  addDialog.close();
+  detailDialog.close();
   form.reset();
 };
 
 export const openAddModal = () => {
-  overlay.classList.add("is-active", "is-add");
-  overlay.classList.remove("is-detail");
+  addDialog.showModal();
 };
 
 export const openDetailModal = (item) => {
-  const { details } = dom.modal;
   const { formattedAmount } = formatAmount(item.amount, item.type);
 
   details.title.textContent = item.title;
@@ -26,13 +25,11 @@ export const openDetailModal = (item) => {
   details.category.textContent = item.category;
   details.payment.textContent = item.payment;
 
-  overlay.classList.add("is-active", "is-detail");
-  overlay.classList.remove("is-add");
+  detailDialog.showModal();
 };
 
 const handleAddSubmit = (e) => {
   e.preventDefault();
-  const { inputs } = dom.modal;
 
   const newData = {
     id: Date.now(),
@@ -51,6 +48,14 @@ const handleAddSubmit = (e) => {
   closeModal();
 };
 
+const handleBackdropClick = (dialog) => {
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog) {
+      dialog.close();
+    }
+  });
+};
+
 export const modal = () => {
   const { addBtn } = dom.history;
 
@@ -59,9 +64,6 @@ export const modal = () => {
 
   closeBtns.forEach((btn) => btn.addEventListener("click", closeModal));
 
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) {
-      closeModal();
-    }
-  });
+  handleBackdropClick(addDialog);
+  handleBackdropClick(detailDialog);
 };

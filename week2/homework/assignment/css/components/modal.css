@@ -1,22 +1,4 @@
-.modal-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: color-mix(in srgb, var(--gray-200) 70%, transparent);
-  z-index: 100;
-}
-
-.modal-overlay.is-active {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .modal {
-  display: none;
   width: 70dvw;
   max-width: 50rem;
   padding: 2rem;
@@ -107,14 +89,6 @@
   color: var(--blue-500);
 }
 
-.modal-overlay.is-add .modal--add {
-  display: block;
-}
-
-.modal-overlay.is-detail .modal--detail {
-  display: block;
-}
-
 .modal--detail .modal__content {
   display: flex;
   flex-direction: column;
@@ -131,4 +105,8 @@
 .modal__info strong {
   display: inline-block;
   width: 6rem;
+}
+
+dialog::backdrop {
+  background-color: color-mix(in srgb, var(--gray-200) 70%, transparent);
 }
