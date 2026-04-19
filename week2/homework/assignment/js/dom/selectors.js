@@ -4,6 +4,10 @@
  */
 
 export const dom = {
+  // header: 새로고침 버튼
+  header: {
+    refreshBtn: document.querySelector(".header__refresh-button"),
+  },
   // filter : 필터 폼, 초기화 버튼, 필터 인풋 객체
   filter: {
     form: document.getElementById("filter-form"),
