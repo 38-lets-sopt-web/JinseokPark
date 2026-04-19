@@ -45,6 +45,13 @@ export const openDetailModal = (item) => {
 const handleAddSubmit = (e) => {
   e.preventDefault();
 
+  // 입력 인풋 중 비어있는 곳이 있다면 alert
+  if (!form.checkValidity()) {
+    alert("모든 필드를 입력해주세요.");
+    form.reportValidity();
+    return;
+  }
+
   // 사용자의 입력 값을 바탕으로 새로운 데이터 객체 생성
   const newData = {
     id: Date.now(),
