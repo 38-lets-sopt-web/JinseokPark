@@ -6,12 +6,12 @@
 export const dom = {
   // header: 새로고침 버튼
   header: {
-    refreshBtn: document.querySelector(".header__refresh-button"),
+    refreshBtn: document.getElementById("header-refresh-button"),
   },
   // filter : 필터 폼, 초기화 버튼, 필터 인풋 객체
   filter: {
     form: document.getElementById("filter-form"),
-    resetBtn: document.querySelector(".filter__button--reset"),
+    resetBtn: document.getElementById("filter-reset-button"),
     inputs: {
       title: document.getElementById("filter-title"),
       type: document.getElementById("filter-type"),
@@ -22,8 +22,8 @@ export const dom = {
 
   // history: 내역 추가 버튼, 선택 삭제 버튼, 테이블 리스트, 전체 체크 박스, 전체 금액 span, 날짜 순 정렬 select
   history: {
-    addBtn: document.querySelector(".history__button--add"),
-    deleteBtn: document.querySelector(".history__button--delete"),
+    addBtn: document.getElementById("history-add-button"),
+    deleteBtn: document.getElementById("history-delete-button"),
     list: document.getElementById("history-list"),
     allCheckbox: document.getElementById("check-all"),
     totalAmount: document.getElementById("total-amount"),

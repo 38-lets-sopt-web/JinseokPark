@@ -25,6 +25,7 @@
           type="button"
           aria-label="페이지 새로고침"
           class="header__refresh-button"
+          id="header-refresh-button"
         >
           <img
             src="assets/images/web-at-home.png"
@@ -95,7 +96,11 @@
             <button type="submit" class="filter__button filter__button--submit">
               적용
             </button>
-            <button type="button" class="filter__button filter__button--reset">
+            <button
+              type="button"
+              class="filter__button filter__button--reset"
+              id="filter-reset-button"
+            >
               초기화
             </button>
           </div>
@@ -115,10 +120,15 @@
             <button
               type="button"
               class="history__button history__button--delete"
+              id="history-delete-button"
             >
               선택삭제
             </button>
-            <button type="button" class="history__button history__button--add">
+            <button
+              type="button"
+              class="history__button history__button--add"
+              id="history-add-button"
+            >
               추가
             </button>
           </div>
