@@ -1,0 +1,48 @@
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+#like {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 2rem;
+}
+
+.picture-list {
+  display: flex;
+  padding: 1rem;
+  overflow: hidden;
+  will-change: transform;
+  cursor: grab;
+}
+
+.picture-group {
+  display: flex;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+  flex-shrink: 0;
+  animation: scrolling 30s linear infinite;
+}
+
+.picture-list:hover .picture-group {
+  animation-play-state: paused;
+}
+
+.picture-list img {
+  width: 16rem;
+  height: 16rem;
+  border-radius: 1rem;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.picture-list img:hover {
+  transform: scale(1.1);
+}
