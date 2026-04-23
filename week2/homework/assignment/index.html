@@ -162,114 +162,115 @@
           </table>
         </div>
       </section>
-
-      <!-- 내역 추가 모달 -->
-      <dialog id="add-dialog" class="modal modal--add">
-        <header class="modal__header">
-          <h3 class="modal__title">내역 추가</h3>
-          <button type="button" class="modal__close" aria-label="모달창 닫기">
-            ✕
-          </button>
-        </header>
-
-        <form class="modal__form" id="add-form" novalidate>
-          <div class="modal__field modal__field--full">
-            <label class="modal__label" for="modal-title">제목</label>
-            <input
-              class="modal__input"
-              type="text"
-              id="modal-title"
-              placeholder="내역을 입력하세요"
-              required
-            />
-          </div>
-
-          <div class="modal__field">
-            <label class="modal__label" for="modal-amount">금액</label>
-            <input
-              class="modal__input"
-              type="number"
-              id="modal-amount"
-              placeholder="금액을 입력하세요"
-              min="0"
-              required
-            />
-          </div>
-
-          <div class="modal__field">
-            <label class="modal__label" for="modal-type">유형</label>
-            <select class="modal__select" id="modal-type" required>
-              <option value="">선택</option>
-              <option value="income">수입</option>
-              <option value="expense">지출</option>
-            </select>
-          </div>
-
-          <div class="modal__field modal__field--full">
-            <label class="modal__label" for="modal-date">날짜</label>
-            <input class="modal__input" type="date" id="modal-date" required />
-          </div>
-
-          <div class="modal__field">
-            <label class="modal__label" for="modal-category">카테고리</label>
-            <select class="modal__select" id="modal-category" required>
-              <option value="">선택</option>
-              <option value="food">식비</option>
-              <option value="salary">월급</option>
-              <option value="culture">문화</option>
-              <option value="transport">교통</option>
-              <option value="living">생활</option>
-              <option value="etc">기타</option>
-            </select>
-          </div>
-
-          <div class="modal__field">
-            <label class="modal__label" for="modal-payment">결제수단</label>
-            <select class="modal__select" id="modal-payment" required>
-              <option value="">선택</option>
-              <option value="cash">현금</option>
-              <option value="credit-card">신용카드</option>
-              <option value="check-card">체크카드</option>
-              <option value="etc">기타</option>
-            </select>
-          </div>
-
-          <div class="modal__actions">
-            <button type="submit" class="modal__button modal__button--submit">
-              추가하기
-            </button>
-          </div>
-        </form>
-      </dialog>
-
-      <!-- 상세 조회 모달 -->
-      <dialog id="detail-dialog" class="modal modal--detail">
-        <header class="modal__header">
-          <h3 class="modal__title">내역 상세</h3>
-          <button type="button" class="modal__close" aria-label="모달창 닫기">
-            ✕
-          </button>
-        </header>
-
-        <div class="modal__content">
-          <div class="modal__info">
-            <strong>제목:</strong> <span id="detail-title"></span>
-          </div>
-          <div class="modal__info">
-            <strong>금액:</strong> <span id="detail-amount"></span>
-          </div>
-          <div class="modal__info">
-            <strong>날짜:</strong> <span id="detail-date"></span>
-          </div>
-          <div class="modal__info">
-            <strong>카테고리:</strong> <span id="detail-category"></span>
-          </div>
-          <div class="modal__info">
-            <strong>결제수단:</strong> <span id="detail-payment"></span>
-          </div>
-        </div>
-      </dialog>
     </main>
+
+    <!-- 내역 추가 모달 -->
+    <dialog id="add-dialog" class="modal modal--add">
+      <header class="modal__header">
+        <h3 class="modal__title">내역 추가</h3>
+        <button type="button" class="modal__close" aria-label="모달창 닫기">
+          ✕
+        </button>
+      </header>
+
+      <form class="modal__form" id="add-form" novalidate>
+        <div class="modal__field modal__field--full">
+          <label class="modal__label" for="modal-title">제목</label>
+          <input
+            class="modal__input"
+            type="text"
+            id="modal-title"
+            placeholder="내역을 입력하세요"
+            required
+          />
+        </div>
+
+        <div class="modal__field">
+          <label class="modal__label" for="modal-amount">금액</label>
+          <input
+            class="modal__input"
+            type="number"
+            id="modal-amount"
+            placeholder="금액을 입력하세요"
+            min="0"
+            required
+          />
+        </div>
+
+        <div class="modal__field">
+          <label class="modal__label" for="modal-type">유형</label>
+          <select class="modal__select" id="modal-type" required>
+            <option value="">선택</option>
+            <option value="income">수입</option>
+            <option value="expense">지출</option>
+          </select>
+        </div>
+
+        <div class="modal__field modal__field--full">
+          <label class="modal__label" for="modal-date">날짜</label>
+          <input class="modal__input" type="date" id="modal-date" required />
+        </div>
+
+        <div class="modal__field">
+          <label class="modal__label" for="modal-category">카테고리</label>
+          <select class="modal__select" id="modal-category" required>
+            <option value="">선택</option>
+            <option value="food">식비</option>
+            <option value="salary">월급</option>
+            <option value="culture">문화</option>
+            <option value="transport">교통</option>
+            <option value="living">생활</option>
+            <option value="etc">기타</option>
+          </select>
+        </div>
+
+        <div class="modal__field">
+          <label class="modal__label" for="modal-payment">결제수단</label>
+          <select class="modal__select" id="modal-payment" required>
+            <option value="">선택</option>
+            <option value="cash">현금</option>
+            <option value="credit-card">신용카드</option>
+            <option value="check-card">체크카드</option>
+            <option value="etc">기타</option>
+          </select>
+        </div>
+
+        <div class="modal__actions">
+          <button type="submit" class="modal__button modal__button--submit">
+            추가하기
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- 상세 조회 모달 -->
+    <dialog id="detail-dialog" class="modal modal--detail">
+      <header class="modal__header">
+        <h3 class="modal__title">내역 상세</h3>
+        <button type="button" class="modal__close" aria-label="모달창 닫기">
+          ✕
+        </button>
+      </header>
+
+      <div class="modal__content">
+        <div class="modal__info">
+          <strong>제목:</strong> <span id="detail-title"></span>
+        </div>
+        <div class="modal__info">
+          <strong>금액:</strong> <span id="detail-amount"></span>
+        </div>
+        <div class="modal__info">
+          <strong>날짜:</strong> <span id="detail-date"></span>
+        </div>
+        <div class="modal__info">
+          <strong>카테고리:</strong> <span id="detail-category"></span>
+        </div>
+        <div class="modal__info">
+          <strong>결제수단:</strong> <span id="detail-payment"></span>
+        </div>
+      </div>
+    </dialog>
+
     <script type="module" src="js/main.js"></script>
   </body>
 </html>
