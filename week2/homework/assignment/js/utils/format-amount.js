@@ -14,9 +14,7 @@ export const formatAmount = (amount, type) => {
   const sign = isIncome ? "+" : "-";
 
   return {
-    // 수입, 지출에 따른 색상 구분을 위한 클래스명
     className: isIncome ? "amount-income" : "amount-expense",
-    // 부호 결합 및 천 단위 콤마 적용(데이터 포맷팅)
     formattedAmount: `${sign}${amount.toLocaleString()}`,
   };
 };

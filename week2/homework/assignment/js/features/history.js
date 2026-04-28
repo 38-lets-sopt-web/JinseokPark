@@ -11,17 +11,14 @@ import { getFilterValues } from "../utils/filter-value.js";
 import { openDetailModal } from "./modal.js";
 
 export const history = () => {
-  // dom 객체에서 필요한 요소 가져오기
   const { allCheckbox, deleteBtn, list, historySort } = dom.history;
 
-  // 전체 체크박스 선택 시, 모든 체크박스에 체크 적용 이벤트 (반대로 해제 시에도 전체 해제)
   allCheckbox.addEventListener("change", (e) => {
     const checkboxes = list.querySelectorAll(".history__checkbox");
     checkboxes.forEach((item) => (item.checked = e.target.checked));
   });
 
   // 개별 체크박스 상태에 따른 전체 체크박스 동기화 이벤트
-  // 모두 체크하면 전체 체크박스도 체크, 하나라도 빠지면 전체 체크박스 해제
   list.addEventListener("change", (e) => {
     if (e.target.classList.contains("history__checkbox")) {
       const checkboxes = list.querySelectorAll(".history__checkbox");
@@ -39,31 +36,25 @@ export const history = () => {
   deleteBtn.addEventListener("click", () => {
     const checkedBoxes = list.querySelectorAll(".history__checkbox:checked");
 
-    // 체크하지 않고 클릭하면 관련 alert로 알리기
     if (checkedBoxes.length === 0) {
       alert("선택한 항목이 없습니다.");
       return;
     }
 
-    // 삭제 전 alert를 통해 한번 더 확인
     if (!confirm("선택한 항목을 삭제하시겠습니까?")) return;
 
-    // 선택된 id, 즉 삭제할 요소의 id만 배열로 추출
     const selectedIds = Array.from(checkedBoxes).map((item) =>
       Number(item.dataset.id),
     );
 
-    // 현재 데이터에서 위에서 추출한 selectedIds에 없는 데이터, 즉 삭제하지 않을 데이터만 필터링
     const currentData = getData();
     const filteredData = currentData.filter(
       (item) => !selectedIds.includes(item.id),
     );
 
-    // 필터링한 데이터로 다시 로컬 스토리지에 저장
     setData(filteredData);
     renderTable();
 
-    // 전체 체크박스 해제
     allCheckbox.checked = false;
   });
 
@@ -79,7 +70,6 @@ export const history = () => {
       return;
     }
 
-    // 날짜 순에 따른 데이터 정렬
     const sortedData = currentData.sort((a, b) => {
       const dateA = new Date(a.date);
       const dateB = new Date(b.date);
@@ -87,7 +77,6 @@ export const history = () => {
       return sortType === "ascending" ? dateA - dateB : dateB - dateA;
     });
 
-    // 현재 필터링 조건 + 정렬 조건으로 테이블 렌더링
     renderTable(currentFilter, sortedData);
   });
 
@@ -99,10 +88,8 @@ export const history = () => {
     const row = targetCell.closest(".history__row");
     const id = Number(row.dataset.id);
 
-    // 현재 데이터 중, 아이디가 클릭한 행과 동일한 아이템 찾기
     const item = getData().find((data) => data.id === id);
     if (item) {
-      // 해당 아이템을 매개변수로 상세보기 모달 열기
       openDetailModal(item);
     }
   });

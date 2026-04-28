@@ -41,12 +41,10 @@ export const renderTable = (filterValues = null, sortedData = null) => {
     });
   }
 
-  // 전체 금액 계산(reduce 활용)
   const total = data.reduce((acc, cur) => {
     return cur.type === "income" ? acc + cur.amount : acc - cur.amount;
   }, 0);
 
-  // 기존 리스트 요소 초기화
   list.innerHTML = "";
 
   // 만약 데이터가 한 개도 없으면, 안내 메시지 및 합계 0원으로 안내 (early return)
@@ -61,9 +59,8 @@ export const renderTable = (filterValues = null, sortedData = null) => {
   data.forEach((item) => {
     const tr = document.createElement("tr");
     tr.className = "history__row";
-    tr.dataset.id = item.id; // 열 클릭 시 id 전달을 위해 tr.dataset에 저장
+    tr.dataset.id = item.id;
 
-    // 유틸 함수 활용 금액 데이터 포맷팅
     const { className, formattedAmount } = formatAmount(item.amount, item.type);
 
     tr.innerHTML = `
@@ -78,16 +75,13 @@ export const renderTable = (filterValues = null, sortedData = null) => {
     list.appendChild(tr);
   });
 
-  // 총 합계 금액 업데이트
   const totalType = total >= 0 ? "income" : "expense";
 
-  // 유틸 함수 활용 전체 금액 데이터 포맷팅
   const { className, formattedAmount } = formatAmount(
     Math.abs(total),
     totalType,
   );
 
-  // 0원일 때는 부호 붙지 않게 설정
   totalAmount.textContent = total === 0 ? "0원" : formattedAmount;
 
   // 기존 클래스명 삭제하고 현재 금액에 맞는 클래스명 적용

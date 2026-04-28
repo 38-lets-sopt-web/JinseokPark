@@ -37,7 +37,6 @@ export const openDetailModal = (item) => {
   details.category.textContent = item.category;
   details.payment.textContent = item.payment;
 
-  // 상세 조회 모달 열기
   detailDialog.showModal();
 };
 
@@ -45,7 +44,6 @@ export const openDetailModal = (item) => {
 const handleAddSubmit = (e) => {
   e.preventDefault();
 
-  // 입력 인풋 중 비어있는 곳이 있다면 alert
   if (!form.checkValidity()) {
     alert("모든 필드를 입력해주세요.");
     form.reportValidity();
@@ -59,16 +57,13 @@ const handleAddSubmit = (e) => {
     amount: Number(inputs.amount.value),
     type: inputs.type.value,
     date: inputs.date.value,
-    // 카테고리, 결제 수단은 데이터 매핑 객체 활용하여 한글로 변환하여 저장
     category: CATEGORY_MAP[inputs.category.value],
     payment: PAYMENT_MAP[inputs.payment.value],
   };
 
   const currentData = getData();
-  // 기존 데이터 + 새로운 데이터 배열을 로컬 스토리지에 저장
   setData([newData, ...currentData]);
 
-  // 테이블 다시 렌더링, 모달 닫기
   renderTable();
   closeModal();
 };
@@ -93,15 +88,12 @@ const handleBackdropClick = (dialog) => {
 export const modal = () => {
   const { addBtn } = dom.history;
 
-  // '추가' 버튼 클릭 시 내역 추가 모달 열기
   addBtn.addEventListener("click", openAddModal);
-  // 내역 추가 폼 제출 시 앞서 정의해둔 handleAddSubmit 실행
+
   form.addEventListener("submit", handleAddSubmit);
 
-  // 두 개의 모달 중 어떤 닫기 버튼을 클릭해도 모달 닫기
   closeBtns.forEach((btn) => btn.addEventListener("click", closeModal));
 
-  // 백드롭 클릭 시 모달 닫기
   handleBackdropClick(addDialog);
   handleBackdropClick(detailDialog);
 };

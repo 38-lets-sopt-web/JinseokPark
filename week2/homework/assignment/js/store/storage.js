@@ -19,7 +19,7 @@ export const getData = () => {
 
 /**
  * 새로운 데이터 배열을 로컬 스토리지에 저장합니다.
- * @param {Array} 저장할 전체 데이터 배열
+ * @param {Array} data - 저장할 전체 데이터 배열
  */
 export const setData = (data) => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));

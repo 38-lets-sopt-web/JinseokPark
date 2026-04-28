@@ -9,7 +9,7 @@ export const header = () => {
 
   if (refreshBtn) {
     refreshBtn.addEventListener("click", () => {
-      window.location.reload(); // 페이지 새로고침
+      window.location.reload();
     });
   }
 };
