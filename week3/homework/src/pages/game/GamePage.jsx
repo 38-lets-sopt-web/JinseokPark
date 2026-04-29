@@ -12,6 +12,8 @@ import { useGameState } from "./hooks/useGameState";
 import { useGameTimer } from "./hooks/useGameTimer";
 import { useShowMole } from "./hooks/useShowMole";
 
+import { addData } from "@/shared/utils/storage";
+
 import { LEVEL } from "./constants/level";
 import { GAME_CONFIG } from "./constants/game";
 
@@ -79,6 +81,7 @@ const GamePage = () => {
   });
 
   const handleModalClose = () => {
+    addData({ level, score });
     setShowModal(false);
     handleStop();
   };
