@@ -1,19 +1,14 @@
 import { style } from "@vanilla-extract/css";
 import { themeVars } from "@/shared/styles/theme.css";
 
-export const pageContainer = style({
-  display: "grid",
-  gridTemplateColumns: "30rem 1fr",
-  gap: "4rem",
-});
-
-export const gameBoard = style({
+export const rankingBoard = style({
   display: "flex",
   flexDirection: "column",
-  gap: "4rem",
-  padding: "3rem",
-  borderRadius: themeVars.radius.l,
+  gap: "2rem",
+  padding: "5rem",
+  minHeight: "45rem",
   backgroundColor: themeVars.color.blue50,
+  borderRadius: themeVars.radius.l,
 });
 
 export const boardHeader = style({
@@ -22,7 +17,6 @@ export const boardHeader = style({
   justifyContent: "space-between",
 });
 
-export const buttonContainer = style({
-  display: "flex",
-  gap: "0.5rem",
+export const title = style({
+  ...themeVars.font.heading_sb_20,
 });
