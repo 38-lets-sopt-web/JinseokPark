@@ -52,4 +52,5 @@ export const cardImage = style({
   width: "80%",
   height: "80%",
   objectFit: "contain",
+  WebkitUserDrag: "none",
 });
