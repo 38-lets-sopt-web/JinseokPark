@@ -4,6 +4,8 @@ import StatusBoard from "./components/status-board/StatusBoard";
 import MoleBoard from "./components/mole-board/MoleBoard";
 import Dropdown from "@/shared/ui/dropdown/Dropdown";
 import Button from "@/shared/ui/button/Button";
+import ModalPortal from "@/shared/ui/portal/ModalPortal";
+import ResultModal from "./components/result-modal/ResultModal";
 
 import { useGameBoard } from "./hooks/useGameBoard";
 import { useGameState } from "./hooks/useGameState";
@@ -16,6 +18,7 @@ import { GAME_CONFIG } from "./constants/game";
 import * as styles from "./GamePage.css";
 
 const GamePage = () => {
+  const [showModal, setShowModal] = useState(false);
   const [level, setLevel] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
   const currentSize = level + 1;
@@ -39,7 +42,8 @@ const GamePage = () => {
     isActive: isPlaying,
     initialTime: GAME_CONFIG[level].INITIAL_TIME,
     onTimeUp: () => {
-      handleStop();
+      setIsPlaying(false);
+      setShowModal(true);
     },
   });
 
@@ -73,6 +77,11 @@ const GamePage = () => {
     isActive: isPlaying,
     onShow: popMole,
   });
+
+  const handleModalClose = () => {
+    setShowModal(false);
+    handleStop();
+  };
 
   return (
     <div className={styles.pageContainer}>
@@ -109,6 +118,16 @@ const GamePage = () => {
           onMoleClick={handleMoleClick}
         />
       </div>
+
+      {showModal && (
+        <ModalPortal>
+          <ResultModal
+            level={level}
+            score={score}
+            onCompleted={handleModalClose}
+          />
+        </ModalPortal>
+      )}
     </div>
   );
 };
