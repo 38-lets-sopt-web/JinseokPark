@@ -1,4 +1,4 @@
-import * as styles from "./button.css";
+import * as styles from "./Button.css";
 
 const Button = ({ children, variant, onClick, ...props }) => {
   return (

@@ -1,7 +1,12 @@
-import MainPage from "@/pages/MainPage";
+import Header from "@/shared/layout/header/Header";
+import * as styles from "./App.css";
 
-function App() {
-  return <MainPage />;
-}
+const App = () => {
+  return (
+    <div className={styles.pageContainer}>
+      <Header />
+    </div>
+  );
+};
 
 export default App;
