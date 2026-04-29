@@ -58,7 +58,6 @@ const GamePage = () => {
   }, [currentSize, initBoard, resetGameState]);
 
   const updateLevel = (e) => {
-    setIsPlaying(false);
     setLevel(Number(e.target.value));
   };
 
@@ -96,7 +95,12 @@ const GamePage = () => {
       />
       <div className={styles.gameBoard}>
         <header className={styles.boardHeader}>
-          <Dropdown options={LEVEL} value={level} onChange={updateLevel} />
+          <Dropdown
+            options={LEVEL}
+            value={level}
+            onChange={updateLevel}
+            disabled={isPlaying}
+          />
           <div className={styles.buttonContainer}>
             <Button
               variant="gameStart"
