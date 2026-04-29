@@ -1,4 +1,7 @@
 import Button from "@/shared/ui/button/button";
+
+import { TABS } from "@/shared/constants/tab";
+
 import * as styles from "./Header.css";
 
 const Header = ({ currentTab, onTabChange }) => {
@@ -11,8 +14,8 @@ const Header = ({ currentTab, onTabChange }) => {
     <header className={styles.headerContainer}>
       <h1 className={styles.title}>두더지 게임</h1>
       <div className={styles.buttonContainer}>
-        <Button onClick={() => handleTabClick("game")}>게임</Button>
-        <Button variant="ranking" onClick={() => handleTabClick("ranking")}>
+        <Button onClick={() => handleTabClick(TABS.GAME)}>게임</Button>
+        <Button variant="ranking" onClick={() => handleTabClick(TABS.RANKING)}>
           랭킹
         </Button>
       </div>

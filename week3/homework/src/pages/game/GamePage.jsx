@@ -14,8 +14,7 @@ import { useShowMole } from "./hooks/useShowMole";
 
 import { addData } from "@/shared/utils/storage";
 
-import { LEVEL } from "./constants/level";
-import { GAME_CONFIG } from "./constants/game";
+import { LEVEL, TIME } from "./constants/game";
 
 import * as styles from "./GamePage.css";
 
@@ -42,7 +41,7 @@ const GamePage = () => {
 
   const { seconds, resetTimer } = useGameTimer({
     isActive: isPlaying,
-    initialTime: GAME_CONFIG[level].INITIAL_TIME,
+    initialTime: TIME[level].initialTime,
     onTimeUp: () => {
       setIsPlaying(false);
       setShowModal(true);
