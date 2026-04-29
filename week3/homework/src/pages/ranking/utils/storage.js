@@ -39,7 +39,13 @@ export const addData = (newItem) => {
   });
   const newData = [...prevData, { ...newItem, date: formattedDate }];
 
-  const sortedData = newData.sort((a, b) => b.score - a.score);
+  const sortedData = newData.sort((a, b) => {
+    if (b.level !== a.level) {
+      return b.level - a.level;
+    }
+
+    return b.score - a.score;
+  });
 
   setData(sortedData);
 };

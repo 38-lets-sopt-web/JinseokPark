@@ -12,7 +12,7 @@ import { useGameState } from "./hooks/useGameState";
 import { useGameTimer } from "./hooks/useGameTimer";
 import { useShowMole } from "./hooks/useShowMole";
 
-import { addData } from "@/shared/utils/storage";
+import { addData } from "@/pages/ranking/utils/storage";
 
 import { LEVEL, TIME } from "./constants/game";
 

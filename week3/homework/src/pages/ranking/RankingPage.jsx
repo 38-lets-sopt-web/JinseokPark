@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "@/shared/ui/button/Button";
 import RankingTable from "./components/ranking-table/RankingTable";
 
-import { getData, setData } from "@/shared/utils/storage";
+import { getData, setData } from "@/pages/ranking/utils/storage";
 
 import * as styles from "./RankingPage.css";
 
