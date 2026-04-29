@@ -11,7 +11,7 @@ const MoleBoard = ({ moleData, onMoleClick, size = 4 }) => {
             type={data.type}
             isFlipped={data.isFlipped}
             isHit={data.isHit}
-            onClick={() => onMoleClick(data.id)}
+            onClick={() => onMoleClick(data)}
           />
         ))}
       </div>

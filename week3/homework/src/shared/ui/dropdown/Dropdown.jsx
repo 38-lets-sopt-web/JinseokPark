@@ -6,8 +6,8 @@ const Dropdown = ({ options, value, onChange, allowAll = false }) => {
       {allowAll && <option value="all">전체</option>}
 
       {options.map((option) => (
-        <option key={option} value={option}>
-          {option}
+        <option key={option.value} value={option.value}>
+          {option.label}
         </option>
       ))}
     </select>

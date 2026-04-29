@@ -5,7 +5,6 @@ export const boardContainer = style({
   gridTemplateColumns: "repeat(2, 1fr)",
   gap: "1rem",
   width: "100%",
-  maxWidth: "400px",
 });
 
 export const fullWidth = style({
