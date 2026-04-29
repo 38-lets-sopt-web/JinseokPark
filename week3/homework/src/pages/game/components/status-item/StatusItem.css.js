@@ -8,7 +8,7 @@ export const itemContainer = style({
   alignItems: "center",
   justifyContent: "center",
   gap: "1rem",
-  padding: "1.6rem",
+  padding: "2rem",
   borderRadius: themeVars.radius.l,
   backgroundColor: themeVars.color.blue50,
 });
