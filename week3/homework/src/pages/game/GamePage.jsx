@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import StatusBoard from "./components/status-board/StatusBoard";
 import GameBoard from "./components/game-board/GameBoard";
@@ -19,6 +19,7 @@ const GamePage = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [level, setLevel] = useState(1);
   const currentSize = level + 1;
+  const clickLock = useRef(false);
 
   const { moleData, initBoard, hitCard, popMole } = useGameBoard(currentSize);
   const { gameState, onHitSuccess, onHitFail, resetGameState } = useGameState();
@@ -44,10 +45,17 @@ const GamePage = () => {
   };
 
   const handleMoleClick = (mole) => {
-    if (!mole.isFlipped) return;
+    if (!mole.isFlipped || clickLock.current) return;
+
+    clickLock.current = true;
+
     if (mole.type === "mole") onHitSuccess();
     else onHitFail();
     hitCard(mole.id);
+
+    setTimeout(() => {
+      clickLock.current = false;
+    }, 600);
   };
 
   const handleModalClose = () => {

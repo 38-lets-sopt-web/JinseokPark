@@ -42,7 +42,9 @@ export const useGameBoard = (size) => {
         prev.map((mole) => (mole.id === id ? { ...mole, isHit: true } : mole)),
       );
 
-      resetCard(id);
+      setTimeout(() => {
+        resetCard(id);
+      }, 600);
     },
     [resetCard],
   );
