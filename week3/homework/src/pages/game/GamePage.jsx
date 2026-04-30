@@ -50,12 +50,9 @@ const GamePage = () => {
 
   useEffect(() => {
     resetTimer();
-  }, [level, resetTimer]);
-
-  useEffect(() => {
     initBoard();
     resetGameState();
-  }, [currentSize, initBoard, resetGameState]);
+  }, [level, initBoard, resetGameState, resetTimer]);
 
   const updateLevel = (e) => {
     setLevel(Number(e.target.value));
