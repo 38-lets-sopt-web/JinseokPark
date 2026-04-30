@@ -11,8 +11,8 @@ export const useGameTimer = ({ isActive, initialTime, onTimeUp }) => {
     if (!isActive || timeLeft <= 0) return;
 
     const timer = setInterval(() => {
-      setTimeLeft((prev) => Math.max(0, prev - 10));
-    }, 10);
+      setTimeLeft((prev) => Math.max(0, prev - 100));
+    }, 100);
 
     return () => clearInterval(timer);
   }, [isActive, timeLeft]);
@@ -24,7 +24,7 @@ export const useGameTimer = ({ isActive, initialTime, onTimeUp }) => {
   }, [timeLeft, isActive, onTimeUp]);
 
   return {
-    seconds: (timeLeft / 1000).toFixed(2),
+    seconds: (timeLeft / 1000).toFixed(1),
     resetTimer,
   };
 };
