@@ -1,9 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 
 import StatusBoard from "./components/status-board/StatusBoard";
-import MoleBoard from "./components/mole-board/MoleBoard";
-import Dropdown from "@/shared/ui/dropdown/Dropdown";
-import Button from "@/shared/ui/button/Button";
+import GameBoard from "./components/game-board/GameBoard";
+
 import ModalPortal from "@/shared/ui/portal/ModalPortal";
 import ResultModal from "./components/result-modal/ResultModal";
 
@@ -12,8 +11,6 @@ import { useGameState } from "./hooks/useGameState";
 import { useShowMole } from "./hooks/useShowMole";
 
 import { addData } from "@/pages/ranking/utils/storage";
-
-import { LEVEL } from "./constants/game";
 
 import * as styles from "./GamePage.css";
 
@@ -83,37 +80,17 @@ const GamePage = () => {
         fail={stats.fail}
         message={message}
       />
-      <div className={styles.gameBoard}>
-        <header className={styles.boardHeader}>
-          <Dropdown
-            options={LEVEL}
-            value={level}
-            onChange={updateLevel}
-            disabled={isPlaying}
-          />
-          <div className={styles.buttonContainer}>
-            <Button
-              variant="gameStart"
-              onClick={handleStart}
-              disabled={isPlaying}
-            >
-              시작
-            </Button>
-            <Button
-              variant="gameStop"
-              onClick={handleStop}
-              disabled={!isPlaying}
-            >
-              중단
-            </Button>
-          </div>
-        </header>
-        <MoleBoard
-          size={currentSize}
-          moleData={moleData}
-          onMoleClick={handleMoleClick}
-        />
-      </div>
+
+      <GameBoard
+        level={level}
+        isPlaying={isPlaying}
+        currentSize={currentSize}
+        moleData={moleData}
+        updateLevel={updateLevel}
+        handleStart={handleStart}
+        handleStop={handleStop}
+        handleMoleClick={handleMoleClick}
+      />
 
       {showModal && (
         <ModalPortal>

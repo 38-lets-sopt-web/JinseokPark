@@ -11,21 +11,19 @@ export const useGameTimer = ({ isActive, initialTime = 60, onTimeUp }) => {
     if (!isActive || timeLeft <= 0) return;
 
     const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        const nextValue = prev - 10;
-        if (nextValue <= 0) {
-          onTimeUp?.();
-          return 0;
-        }
-        return nextValue;
-      });
+      setTimeLeft((prev) => Math.max(0, prev - 10));
     }, 10);
 
     return () => clearInterval(timer);
-  }, [isActive, onTimeUp]);
+  }, [isActive, timeLeft]);
+
+  useEffect(() => {
+    if (timeLeft <= 0 && isActive) {
+      onTimeUp?.();
+    }
+  }, [timeLeft, isActive, onTimeUp]);
 
   return {
-    timeLeft,
     seconds: (timeLeft / 1000).toFixed(2),
     resetTimer,
   };
