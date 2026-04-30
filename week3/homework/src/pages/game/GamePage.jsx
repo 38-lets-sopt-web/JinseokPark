@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 import StatusBoard from "./components/status-board/StatusBoard";
 import MoleBoard from "./components/mole-board/MoleBoard";
@@ -9,12 +9,11 @@ import ResultModal from "./components/result-modal/ResultModal";
 
 import { useGameBoard } from "./hooks/useGameBoard";
 import { useGameState } from "./hooks/useGameState";
-import { useGameTimer } from "./hooks/useGameTimer";
 import { useShowMole } from "./hooks/useShowMole";
 
 import { addData } from "@/pages/ranking/utils/storage";
 
-import { LEVEL, TIME } from "./constants/game";
+import { LEVEL } from "./constants/game";
 
 import * as styles from "./GamePage.css";
 
@@ -32,43 +31,35 @@ const GamePage = () => {
     setIsPlaying(true);
   };
 
-  const handleStop = () => {
-    resetTimer();
+  const handleStop = useCallback(() => {
     resetGameState();
     initBoard();
     setIsPlaying(false);
-  };
+  }, [resetGameState, initBoard]);
 
-  const { seconds, resetTimer } = useGameTimer({
-    isActive: isPlaying,
-    initialTime: TIME[level].initialTime,
-    onTimeUp: () => {
-      setIsPlaying(false);
-      setShowModal(true);
-    },
-  });
+  const handleTimeUp = useCallback(() => {
+    setIsPlaying(false);
+    setShowModal(true);
+  }, []);
 
   useEffect(() => {
-    resetTimer();
     initBoard();
     resetGameState();
-  }, [level, initBoard, resetGameState, resetTimer]);
+  }, [level, initBoard, resetGameState]);
 
-  const updateLevel = (e) => {
+  const updateLevel = useCallback((e) => {
     setLevel(Number(e.target.value));
-  };
+  }, []);
 
-  const handleMoleClick = (mole) => {
-    if (!mole.isFlipped) return;
-
-    if (mole.type === "mole") {
-      onHitSuccess();
-    } else {
-      onHitFail();
-    }
-
-    hitCard(mole.id);
-  };
+  const handleMoleClick = useCallback(
+    (mole) => {
+      if (!mole.isFlipped) return;
+      if (mole.type === "mole") onHitSuccess();
+      else onHitFail();
+      hitCard(mole.id);
+    },
+    [onHitSuccess, onHitFail, hitCard],
+  );
 
   useShowMole({
     isActive: isPlaying,
@@ -84,7 +75,9 @@ const GamePage = () => {
   return (
     <div className={styles.pageContainer}>
       <StatusBoard
-        time={seconds}
+        isPlaying={isPlaying}
+        level={level}
+        onTimeUp={handleTimeUp}
         score={score}
         success={stats.success}
         fail={stats.fail}
