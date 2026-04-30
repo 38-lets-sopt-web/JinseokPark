@@ -1,37 +1,35 @@
 import StatusItem from "../status-item/StatusItem";
 import TimerItem from "../timer-item/TimerItem";
-import { boardContainer, fullWidth } from "./StatusBoard.css";
+
 import { TIME } from "../../constants/game";
 
-const StatusBoard = ({
-  isPlaying,
-  level,
-  onTimeUp,
-  score,
-  success,
-  fail,
-  message,
-}) => {
+import * as styles from "./StatusBoard.css";
+
+const StatusBoard = ({ isPlaying, level, onTimeUp, gameState }) => {
   return (
-    <div className={boardContainer}>
+    <div className={styles.boardContainer}>
       <TimerItem
         isPlaying={isPlaying}
         initialTime={TIME[level].initialTime}
         onTimeUp={onTimeUp}
-        className={fullWidth}
+        className={styles.fullWidth}
       />
 
-      <StatusItem label="총 점수" className={fullWidth}>
-        {score}
+      <StatusItem label="총 점수" className={styles.fullWidth}>
+        {gameState.score}
       </StatusItem>
       <StatusItem label="성공" status="success">
-        {success}
+        {gameState.stats.success}
       </StatusItem>
       <StatusItem label="실패" status="fail">
-        {fail}
+        {gameState.stats.fail}
       </StatusItem>
-      <StatusItem label="안내 메시지" type="message" className={fullWidth}>
-        {message}
+      <StatusItem
+        label="안내 메시지"
+        type="message"
+        className={styles.fullWidth}
+      >
+        {gameState.message}
       </StatusItem>
     </div>
   );

@@ -1,6 +1,7 @@
 import Dropdown from "@/shared/ui/dropdown/Dropdown";
 import Button from "@/shared/ui/button/Button";
 import MoleBoard from "../mole-board/MoleBoard";
+
 import { LEVEL } from "../../constants/game";
 
 import * as styles from "./GameBoard.css";

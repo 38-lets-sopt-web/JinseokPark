@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
-export const useGameTimer = ({ isActive, initialTime = 60, onTimeUp }) => {
+export const useGameTimer = ({ isActive, initialTime, onTimeUp }) => {
   const [timeLeft, setTimeLeft] = useState(initialTime * 1000);
 
   const resetTimer = useCallback(() => {

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 import StatusBoard from "./components/status-board/StatusBoard";
 import GameBoard from "./components/game-board/GameBoard";
@@ -16,58 +16,55 @@ import * as styles from "./GamePage.css";
 
 const GamePage = () => {
   const [showModal, setShowModal] = useState(false);
-  const [level, setLevel] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [level, setLevel] = useState(1);
   const currentSize = level + 1;
 
   const { moleData, initBoard, hitCard, popMole } = useGameBoard(currentSize);
-  const { score, stats, message, onHitSuccess, onHitFail, resetGameState } =
-    useGameState();
+  const { gameState, onHitSuccess, onHitFail, resetGameState } = useGameState();
+
+  useShowMole({
+    isPlaying: isPlaying,
+    onShow: popMole,
+  });
 
   const handleStart = () => {
     setIsPlaying(true);
   };
 
-  const handleStop = useCallback(() => {
+  const handleStop = () => {
     resetGameState();
     initBoard();
     setIsPlaying(false);
-  }, [resetGameState, initBoard]);
+  };
 
-  const handleTimeUp = useCallback(() => {
+  const handleTimeUp = () => {
     setIsPlaying(false);
     setShowModal(true);
-  }, []);
+  };
+
+  const handleMoleClick = (mole) => {
+    if (!mole.isFlipped) return;
+    if (mole.type === "mole") onHitSuccess();
+    else onHitFail();
+    hitCard(mole.id);
+  };
+
+  const handleModalClose = () => {
+    const score = gameState.score;
+    addData({ level, score });
+    setShowModal(false);
+    handleStop();
+  };
+
+  const updateLevel = (e) => {
+    setLevel(Number(e.target.value));
+  };
 
   useEffect(() => {
     initBoard();
     resetGameState();
   }, [level, initBoard, resetGameState]);
-
-  const updateLevel = useCallback((e) => {
-    setLevel(Number(e.target.value));
-  }, []);
-
-  const handleMoleClick = useCallback(
-    (mole) => {
-      if (!mole.isFlipped) return;
-      if (mole.type === "mole") onHitSuccess();
-      else onHitFail();
-      hitCard(mole.id);
-    },
-    [onHitSuccess, onHitFail, hitCard],
-  );
-
-  useShowMole({
-    isActive: isPlaying,
-    onShow: popMole,
-  });
-
-  const handleModalClose = () => {
-    addData({ level, score });
-    setShowModal(false);
-    handleStop();
-  };
 
   return (
     <div className={styles.pageContainer}>
@@ -75,10 +72,7 @@ const GamePage = () => {
         isPlaying={isPlaying}
         level={level}
         onTimeUp={handleTimeUp}
-        score={score}
-        success={stats.success}
-        fail={stats.fail}
-        message={message}
+        gameState={gameState}
       />
 
       <GameBoard
@@ -96,7 +90,7 @@ const GamePage = () => {
         <ModalPortal>
           <ResultModal
             level={level}
-            score={score}
+            score={gameState.score}
             onCompleted={handleModalClose}
           />
         </ModalPortal>

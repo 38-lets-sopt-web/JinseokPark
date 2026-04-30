@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
 
-export const useShowMole = ({ isActive, onShow }) => {
+export const useShowMole = ({ isPlaying, onShow }) => {
   const showTimerRef = useRef(null);
+
   useEffect(() => {
-    if (!isActive) return;
+    if (!isPlaying) return;
 
     let stopGame = false;
 
@@ -24,5 +25,5 @@ export const useShowMole = ({ isActive, onShow }) => {
       stopGame = true;
       clearTimeout(showTimerRef.current);
     };
-  }, [isActive, onShow]);
+  }, [isPlaying, onShow]);
 };

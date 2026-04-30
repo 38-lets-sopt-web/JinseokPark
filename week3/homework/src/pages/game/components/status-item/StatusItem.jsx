@@ -1,5 +1,6 @@
-import * as styles from "./StatusItem.css";
 import clsx from "clsx";
+
+import * as styles from "./StatusItem.css";
 
 const StatusItem = ({
   label,

@@ -1,7 +1,8 @@
-import * as styles from "./MoleBoard.css";
 import Mole from "../mole/Mole";
 
-const MoleBoard = ({ moleData, onMoleClick, size = 4 }) => {
+import * as styles from "./MoleBoard.css";
+
+const MoleBoard = ({ moleData, onMoleClick, size }) => {
   return (
     <div className={styles.boardContainer}>
       <div className={styles.boardRecipe({ size })}>

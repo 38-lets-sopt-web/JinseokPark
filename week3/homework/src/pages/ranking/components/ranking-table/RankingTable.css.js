@@ -2,7 +2,6 @@ import { style } from "@vanilla-extract/css";
 import { themeVars } from "@/shared/styles/theme.css";
 
 export const table = style({
-  width: "100%",
   borderCollapse: "collapse",
   backgroundColor: themeVars.color.white,
   borderRadius: themeVars.radius.m,

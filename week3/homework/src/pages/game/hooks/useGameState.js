@@ -25,9 +25,11 @@ export const useGameState = () => {
   }, []);
 
   return {
-    score,
-    stats,
-    message,
+    gameState: {
+      score,
+      stats,
+      message,
+    },
     onHitSuccess,
     onHitFail,
     resetGameState,
