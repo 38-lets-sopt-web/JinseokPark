@@ -1,0 +1,138 @@
+.history {
+  width: 80vw;
+  max-width: 1000px;
+  padding: 2.5rem;
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  background-color: var(--white);
+}
+
+.history__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.history__sort {
+  height: 3.5rem;
+  padding: 0 1rem;
+  border: 1px solid var(--gray-200);
+  border-radius: 5px;
+  font-size: 1.2rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.history__actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.history__button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  transition: background-color 0.2s;
+}
+
+.history__button--delete {
+  background-color: var(--red-500);
+  color: var(--white);
+  border: 1px solid var(--red-500);
+}
+
+.history__button--delete:hover {
+  background-color: var(--white);
+  color: var(--red-500);
+}
+
+.history__button--add {
+  background-color: var(--blue-500);
+  color: var(--white);
+  border: 1px solid var(--blue-500);
+}
+
+.history__button--add:hover {
+  background-color: var(--white);
+  color: var(--blue-500);
+}
+
+.history__table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--gray-200);
+  border-radius: 0.5rem;
+}
+
+.history__table {
+  width: 100%;
+  min-width: 45rem;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.history__table th:nth-child(1) {
+  width: 10%;
+}
+.history__table th:nth-child(2) {
+  width: auto;
+}
+.history__table th:nth-child(3) {
+  width: 20%;
+}
+.history__table th:nth-child(4) {
+  width: 25%;
+}
+.history__table th:nth-child(5) {
+  width: 10%;
+}
+.history__table th:nth-child(6) {
+  width: 20%;
+}
+
+.history__table thead {
+  background-color: var(--gray-50);
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.history__table th,
+.history__table td {
+  padding: 1.2rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--gray-200);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.2rem;
+  color: var(--gray-800);
+}
+
+.history__table th {
+  font-weight: 600;
+}
+
+.history__table td {
+  font-weight: 500;
+}
+
+.history__table td.amount-income {
+  color: var(--blue-500);
+}
+
+.history__table td.amount-expense {
+  color: var(--red-500);
+}
+
+.history__checkbox {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--blue-500);
+}
+
+.history__table tbody tr:hover {
+  background-color: var(--blue-50);
+}
+
+.history__total-row {
+  background-color: var(--blue-50);
+}

@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="LET'S WEB 2주차 과제, 가계부 페이지입니다."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Google Font 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+    <title>🏡 가계부에 웹왔니</title>
+  </head>
+  <body>
+    <!-- 헤더 영역 -->
+    <header class="header">
+      <div class="header__column">
+        <button
+          type="button"
+          aria-label="페이지 새로고침"
+          class="header__refresh-button"
+          id="header-refresh-button"
+        >
+          <img
+            src="assets/images/web-at-home.png"
+            alt=""
+            class="header__logo"
+          />
+        </button>
+      </div>
+
+      <div class="header__column">
+        <h1 class="header__title">가계부에 웹왔니</h1>
+      </div>
+
+      <div class="header__column">
+        <p class="header__info">🏡 LET'S SOPT 38기 WEB 박진석</p>
+      </div>
+    </header>
+    <main>
+      <!-- 필터 영역 -->
+      <section class="filter">
+        <h2 class="filter__title">검색 필터</h2>
+
+        <form class="filter__form" id="filter-form">
+          <div class="filter__field filter__field--title">
+            <label class="filter__label" for="filter-title">제목</label>
+            <input
+              type="text"
+              class="filter__input"
+              id="filter-title"
+              placeholder="내역을 입력하세요"
+            />
+          </div>
+
+          <div class="filter__field">
+            <label class="filter__label" for="filter-type">유형</label>
+            <select class="filter__select" id="filter-type">
+              <option value="">전체</option>
+              <option value="income">수입</option>
+              <option value="expense">지출</option>
+            </select>
+          </div>
+
+          <div class="filter__field">
+            <label class="filter__label" for="filter-category">카테고리</label>
+            <select class="filter__select" id="filter-category">
+              <option value="">전체</option>
+              <option value="food">식비</option>
+              <option value="salary">월급</option>
+              <option value="culture">문화</option>
+              <option value="transport">교통</option>
+              <option value="living">생활</option>
+              <option value="etc">기타</option>
+            </select>
+          </div>
+
+          <div class="filter__field">
+            <label class="filter__label" for="filter-payment">결제수단</label>
+            <select class="filter__select" id="filter-payment">
+              <option value="">전체</option>
+              <option value="cash">현금</option>
+              <option value="credit-card">신용카드</option>
+              <option value="check-card">체크카드</option>
+              <option value="etc">기타</option>
+            </select>
+          </div>
+
+          <div class="filter__actions">
+            <button type="submit" class="filter__button filter__button--submit">
+              적용
+            </button>
+            <button
+              type="button"
+              class="filter__button filter__button--reset"
+              id="filter-reset-button"
+            >
+              초기화
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- 가계부 내역 영역 -->
+      <section class="history">
+        <header class="history__header">
+          <select class="history__sort" id="history-sort">
+            <option value="">전체</option>
+            <option value="descending">날짜 내림차순</option>
+            <option value="ascending">날짜 오름차순</option>
+          </select>
+
+          <div class="history__actions">
+            <button
+              type="button"
+              class="history__button history__button--delete"
+              id="history-delete-button"
+            >
+              선택삭제
+            </button>
+            <button
+              type="button"
+              class="history__button history__button--add"
+              id="history-add-button"
+            >
+              추가
+            </button>
+          </div>
+        </header>
+
+        <div class="history__table-wrapper">
+          <table class="history__table">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <input
+                    type="checkbox"
+                    id="check-all"
+                    class="history__checkbox"
+                  />
+                </th>
+                <th scope="col">제목</th>
+                <th scope="col">금액</th>
+                <th scope="col">날짜</th>
+                <th scope="col">카테고리</th>
+                <th scope="col">결제수단</th>
+              </tr>
+            </thead>
+            <tbody id="history-list"></tbody>
+            <tfoot>
+              <tr class="history__total-row">
+                <td colspan="2">합계</td>
+                <td id="total-amount" colspan="4"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- 내역 추가 모달 -->
+    <dialog id="add-dialog" class="modal modal--add">
+      <header class="modal__header">
+        <h3 class="modal__title">내역 추가</h3>
+        <button type="button" class="modal__close" aria-label="모달창 닫기">
+          ✕
+        </button>
+      </header>
+
+      <form class="modal__form" id="add-form" novalidate>
+        <div class="modal__field modal__field--full">
+          <label class="modal__label" for="modal-title">제목</label>
+          <input
+            class="modal__input"
+            type="text"
+            id="modal-title"
+            placeholder="내역을 입력하세요"
+            required
+          />
+        </div>
+
+        <div class="modal__field">
+          <label class="modal__label" for="modal-amount">금액</label>
+          <input
+            class="modal__input"
+            type="number"
+            id="modal-amount"
+            placeholder="금액을 입력하세요"
+            min="0"
+            required
+          />
+        </div>
+
+        <div class="modal__field">
+          <label class="modal__label" for="modal-type">유형</label>
+          <select class="modal__select" id="modal-type" required>
+            <option value="">선택</option>
+            <option value="income">수입</option>
+            <option value="expense">지출</option>
+          </select>
+        </div>
+
+        <div class="modal__field modal__field--full">
+          <label class="modal__label" for="modal-date">날짜</label>
+          <input class="modal__input" type="date" id="modal-date" required />
+        </div>
+
+        <div class="modal__field">
+          <label class="modal__label" for="modal-category">카테고리</label>
+          <select class="modal__select" id="modal-category" required>
+            <option value="">선택</option>
+            <option value="food">식비</option>
+            <option value="salary">월급</option>
+            <option value="culture">문화</option>
+            <option value="transport">교통</option>
+            <option value="living">생활</option>
+            <option value="etc">기타</option>
+          </select>
+        </div>
+
+        <div class="modal__field">
+          <label class="modal__label" for="modal-payment">결제수단</label>
+          <select class="modal__select" id="modal-payment" required>
+            <option value="">선택</option>
+            <option value="cash">현금</option>
+            <option value="credit-card">신용카드</option>
+            <option value="check-card">체크카드</option>
+            <option value="etc">기타</option>
+          </select>
+        </div>
+
+        <div class="modal__actions">
+          <button type="submit" class="modal__button modal__button--submit">
+            추가하기
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- 상세 조회 모달 -->
+    <dialog id="detail-dialog" class="modal modal--detail">
+      <header class="modal__header">
+        <h3 class="modal__title">내역 상세</h3>
+        <button type="button" class="modal__close" aria-label="모달창 닫기">
+          ✕
+        </button>
+      </header>
+
+      <div class="modal__content">
+        <div class="modal__info">
+          <strong>제목:</strong> <span id="detail-title"></span>
+        </div>
+        <div class="modal__info">
+          <strong>금액:</strong> <span id="detail-amount"></span>
+        </div>
+        <div class="modal__info">
+          <strong>날짜:</strong> <span id="detail-date"></span>
+        </div>
+        <div class="modal__info">
+          <strong>카테고리:</strong> <span id="detail-category"></span>
+        </div>
+        <div class="modal__info">
+          <strong>결제수단:</strong> <span id="detail-payment"></span>
+        </div>
+      </div>
+    </dialog>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

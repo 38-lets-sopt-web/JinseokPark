@@ -1,0 +1,88 @@
+.filter {
+  width: 80vw;
+  max-width: 1000px;
+  padding: 2.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+  background-color: var(--gray-50);
+}
+
+.filter__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2.4rem;
+}
+
+.filter__form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.filter__field {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  align-items: center;
+}
+
+.filter__field--title {
+  grid-column: span 3;
+}
+
+.filter__actions {
+  grid-column: span 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.filter__input,
+.filter__select {
+  height: 3.5rem;
+  padding: 0 1rem;
+  border: 1px solid var(--gray-200);
+  border-radius: 5px;
+  font-size: 1.2rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.filter__input:focus,
+.filter__select:focus {
+  border-color: var(--blue-500);
+}
+
+.filter__label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--gray-800);
+}
+
+.filter__button {
+  padding: 0.8rem;
+  border: 1px solid var(--blue-500);
+  border-radius: 0.5rem;
+  background-color: var(--blue-500);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filter__button:hover {
+  background-color: var(--gray-50);
+  color: var(--blue-500);
+}
+
+@media (max-width: 768px) {
+  .filter__form {
+    grid-template-columns: 1fr;
+  }
+
+  .filter__field--title,
+  .filter__actions {
+    grid-column: span 1;
+  }
+}
