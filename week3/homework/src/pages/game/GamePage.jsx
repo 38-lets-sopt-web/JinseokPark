@@ -60,7 +60,7 @@ const GamePage = () => {
 
   const handleModalClose = () => {
     const score = gameState.score;
-    addData({ level, score });
+    if (score > 0) addData({ level, score });
     setShowModal(false);
     handleStop();
   };
