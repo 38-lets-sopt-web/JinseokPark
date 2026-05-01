@@ -11,7 +11,6 @@ export const overlay = style({
   width: "100vw",
   height: "100vh",
   backgroundColor: `color-mix(in srgb, ${themeVars.color.gray800}, transparent 40%)`,
-  zIndex: themeVars.zIndex.modal,
 });
 
 export const modalContainer = style({
