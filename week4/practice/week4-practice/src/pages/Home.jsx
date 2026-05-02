@@ -1,6 +1,22 @@
-import { Link } from "react-router";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import UserCard from "../components/UserCard";
 
 const Home = () => {
+  const [userList, setUserList] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/users`);
+        setUserList(res.data.data.users);
+      } catch (error) {
+        console.error("유저 리스트를 불러오는 데 실패했습니다.", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div style={{ padding: "2rem" }}>
       <h1>홈</h1>
@@ -12,8 +28,9 @@ const Home = () => {
           gap: "1rem",
         }}
       >
-        <Link to="/member/이채영">웹팟장이채영</Link>
-        <Link to="/member/양승혜">미팀장양승혜</Link>
+        {userList.map((user) => (
+          <UserCard key={user.id} user={user} />
+        ))}
       </div>
     </div>
   );
