@@ -7,7 +7,7 @@ import type { LoginRequest } from "../model/types";
 import { ROUTES } from "../../../shared/constants/routes";
 import { MESSAGE } from "../../../shared/constants/message";
 
-const STORAGE_KEY = "userId";
+import { setUserId } from "../../../shared/utils/storage";
 
 export const useLogin = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ export const useLogin = () => {
       const response = await postLogin(loginData);
 
       if (response.success && response.data) {
-        localStorage.setItem(STORAGE_KEY, String(response.data.userId));
+        setUserId(response.data.userId);
         navigate(ROUTES.MYPAGE);
       }
     } catch {
