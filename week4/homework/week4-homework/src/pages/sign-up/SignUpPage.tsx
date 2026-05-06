@@ -10,7 +10,14 @@ import type { SignUpRequest } from "../../features/auth/model/types";
 
 import { useSignUp } from "../../features/auth/hooks/use-signup";
 
+import { MESSAGE } from "../../shared/constants/message";
+
 const partOptions = ["웹", "iOS", "안드로이드"];
+
+const idRegex = /^[a-zA-Z0-9]{4,20}$/;
+const passwordRegex =
+  /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 const SignUpPage = () => {
   const [step, setStep] = useState(1);
@@ -37,11 +44,16 @@ const SignUpPage = () => {
     }));
   };
 
-  const isStep1Valid = form.loginId.trim() !== "";
-  const isStep2Valid =
-    form.password.length >= 8 && form.password === form.passwordCheck;
-  const isStep3Valid =
-    form.name.trim() !== "" && form.age > 0 && form.part !== "";
+  const isIdValid = idRegex.test(form.loginId);
+
+  const isPasswordValid = passwordRegex.test(form.password);
+  const isPasswordMatch =
+    form.password.length > 0 && form.password === form.passwordCheck;
+
+  const isNameValid = form.name.length > 0 && form.name.length <= 10;
+  const isEmailValid = emailRegex.test(form.email);
+  const isAgeValid = form.age > 0 && !isNaN(Number(form.age));
+  const isPartValid = form.part !== "";
 
   const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -76,6 +88,8 @@ const SignUpPage = () => {
               name="loginId"
               placeholder="아이디를 입력해주세요"
               onChange={handleChange}
+              isError={form.loginId.length > 0 && !isIdValid}
+              errorMessage={MESSAGE.ID_NOTICE}
             />
           )}
 
@@ -87,6 +101,8 @@ const SignUpPage = () => {
                 type="password"
                 placeholder="비밀번호를 입력해주세요"
                 onChange={handleChange}
+                isError={form.password.length > 0 && !isPasswordValid}
+                errorMessage={MESSAGE.PASSWORD_NOTICE}
               />
               <Input
                 label="비밀번호 확인"
@@ -94,6 +110,8 @@ const SignUpPage = () => {
                 type="password"
                 placeholder="비밀번호를 다시 입력해주세요"
                 onChange={handleChange}
+                isError={form.passwordCheck.length > 0 && !isPasswordMatch}
+                errorMessage={MESSAGE.PASSWORD_DISMATCH}
               />
             </>
           )}
@@ -105,6 +123,8 @@ const SignUpPage = () => {
                 name="name"
                 placeholder="이름을 입력해주세요"
                 onChange={handleChange}
+                isError={form.name.length > 0 && !isNameValid}
+                errorMessage={MESSAGE.NAME_NOTICE}
               />
               <Input
                 label="이메일"
@@ -112,6 +132,8 @@ const SignUpPage = () => {
                 type="email"
                 placeholder="이메일을 입력해주세요"
                 onChange={handleChange}
+                isError={form.email.length > 0 && !isEmailValid}
+                errorMessage={MESSAGE.EMAIL_NOTICE}
               />
               <Input
                 label="나이"
@@ -119,6 +141,7 @@ const SignUpPage = () => {
                 type="number"
                 placeholder="나이를 입력해주세요"
                 onChange={handleChange}
+                // 나이는 type="number"로 제한해두었기에, 따로 에러 메시지는 구현하지 않았습니다.
               />
               <Select
                 label="파트"
@@ -135,9 +158,10 @@ const SignUpPage = () => {
             type="submit"
             disabled={
               isLoading ||
-              (step === 1 && !isStep1Valid) ||
-              (step === 2 && !isStep2Valid) ||
-              (step === 3 && !isStep3Valid)
+              (step === 1 && !isIdValid) ||
+              (step === 2 && (!isPasswordValid || !isPasswordMatch)) ||
+              (step === 3 &&
+                (!isNameValid || !isEmailValid || !isAgeValid || !isPartValid))
             }
           >
             {step === 3 ? "회원가입" : "다음"}
