@@ -8,6 +8,8 @@ import type { SubmitEvent, ChangeEvent } from "react";
 
 import { useLogin } from "../../features/auth/hooks/use-login";
 
+import { ROUTES } from "../../shared/constants/routes";
+
 const LoginPage = () => {
   const [form, setForm] = useState({
     loginId: "",
@@ -67,7 +69,7 @@ const LoginPage = () => {
             type="button"
             className="bg-gray-100 text-gray-700 hover:bg-gray-200"
             onClick={() => {
-              navigate("/signup");
+              navigate(ROUTES.SIGNUP);
             }}
           >
             회원가입

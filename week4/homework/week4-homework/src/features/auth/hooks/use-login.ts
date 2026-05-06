@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postLogin } from "../api/auth";
+
 import type { LoginRequest } from "../model/types";
+
+import { ROUTES } from "../../../shared/constants/routes";
+import { MESSAGE } from "../../../shared/constants/message";
+
+const STORAGE_KEY = "userId";
 
 export const useLogin = () => {
   const navigate = useNavigate();
@@ -14,11 +20,11 @@ export const useLogin = () => {
       const response = await postLogin(loginData);
 
       if (response.success && response.data) {
-        localStorage.setItem("userId", String(response.data.userId));
-        navigate("/mypage");
+        localStorage.setItem(STORAGE_KEY, String(response.data.userId));
+        navigate(ROUTES.MYPAGE);
       }
     } catch {
-      setErrorMessage("로그인에 실패했습니다.");
+      setErrorMessage(MESSAGE.ERROR);
     } finally {
       setIsLoading(false);
     }

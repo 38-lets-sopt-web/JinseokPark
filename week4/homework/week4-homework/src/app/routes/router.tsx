@@ -6,11 +6,13 @@ import MemberListPage from "../../pages/members/list/MemberListPage";
 import MemberDetailPage from "../../pages/members/detail/MemberDetailPage";
 import Layout from "../layout/Layout";
 
+import { ROUTES } from "../../shared/constants/routes";
+
 export const router = createBrowserRouter([
-  { path: "/login", element: <LoginPage /> },
-  { path: "/signup", element: <SignUpPage /> },
+  { path: ROUTES.LOGIN, element: <LoginPage /> },
+  { path: ROUTES.SIGNUP, element: <SignUpPage /> },
   {
-    path: "/mypage",
+    path: ROUTES.MYPAGE,
     element: <Layout />,
     children: [
       { index: true, element: <MyPage /> },
@@ -18,7 +20,7 @@ export const router = createBrowserRouter([
         path: "members",
         children: [
           { index: true, element: <MemberListPage /> },
-          { path: ":memberId", element: <MemberDetailPage /> },
+          { path: ":userId", element: <MemberDetailPage /> },
         ],
       },
     ],
