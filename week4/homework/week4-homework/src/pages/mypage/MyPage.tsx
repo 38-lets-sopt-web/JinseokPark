@@ -1,7 +1,10 @@
 import Button from "../../shared/components/Button";
 import Input from "../../shared/components/Input";
+import { useUserProfile } from "../../entities/user/hooks/use-user-profile";
 
 const MyPage = () => {
+  const { userData } = useUserProfile();
+
   return (
     <main className="flex flex-col items-center justify-center gap-8 p-8">
       <h1 className="text-center text-2xl font-bold text-gray-900">내 정보</h1>
@@ -10,13 +13,13 @@ const MyPage = () => {
         <div className="flex items-center justify-between">
           <span className="text-sm font-medium text-gray-500">아이디</span>
           <span className="text-base font-bold text-gray-900">
-            jin-evergreen
+            {userData?.loginId}
           </span>
         </div>
         <div className="flex items-center justify-between">
           <span className="text-sm font-medium text-gray-500">파트</span>
           <span className="flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-600">
-            Web
+            {userData?.part}
           </span>
         </div>
       </section>

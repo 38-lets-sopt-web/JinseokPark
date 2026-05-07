@@ -5,7 +5,7 @@ import type {
   UserUpdateRequest,
 } from "../model/types";
 
-export const getMyProfile = async (userId: number): Promise<UserResponse> => {
+export const getUserProfile = async (userId: number): Promise<UserResponse> => {
   const { data } = await client.get<UserResponse>(`/users/${userId}`);
   return data;
 };

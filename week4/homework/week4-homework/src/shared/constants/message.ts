@@ -7,4 +7,5 @@ export const MESSAGE = {
   PASSWORD_DISMATCH: "비밀번호가 일치하지 않습니다",
   NAME_NOTICE: "이름은 10자 이내로 입력해주세요",
   EMAIL_NOTICE: "이메일 형식에 맞게 입력해주세요",
+  MEMBER_PROFILE_ERROR: "멤버 정보를 조회하지 못했습니다.",
 };
