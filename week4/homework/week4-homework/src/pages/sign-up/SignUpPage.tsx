@@ -172,7 +172,7 @@ const SignUpPage = () => {
             <button
               type="button"
               onClick={() => navigate("/login")}
-              className="text-blue-600 font-semibold hover:underline"
+              className="font-semibold text-blue-600 hover:underline"
             >
               로그인
             </button>

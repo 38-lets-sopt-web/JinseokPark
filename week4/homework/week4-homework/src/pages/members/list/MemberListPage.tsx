@@ -15,8 +15,8 @@ const MemberListPage = () => {
 
   return (
     <main className="flex flex-col items-center gap-12 p-8">
-      <section className="flex flex-col w-full max-w-96 gap-6">
-        <h1 className="text-2xl font-bold text-gray-900 text-center">
+      <section className="flex w-full max-w-96 flex-col gap-6">
+        <h1 className="text-center text-2xl font-bold text-gray-900">
           회원 조회
         </h1>
         <div className="flex flex-col gap-4">
@@ -36,7 +36,7 @@ const MemberListPage = () => {
         />
       </section>
 
-      <section className="w-full flex flex-col max-w-5xl gap-6">
+      <section className="flex w-full max-w-5xl flex-col gap-6">
         <h2 className="text-xl font-bold text-gray-900">전체 멤버</h2>
         <MemberCardList members={mockMembers} />
       </section>

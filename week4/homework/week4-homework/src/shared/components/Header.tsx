@@ -6,7 +6,7 @@ interface HeaderProps {
 
 const Header = ({ name = "SOPT" }: HeaderProps) => {
   return (
-    <header className="flex w-full items-center justify-between px-8 py-4 bg-blue-500">
+    <header className="flex w-full items-center justify-between bg-blue-500 px-8 py-4">
       <div className="flex flex-col gap-1">
         <p className="text-xl font-semibold text-white">SOPT MEMBERS</p>
         <p className="text-sm text-white">안녕하세요 {name}님</p>

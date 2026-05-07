@@ -10,8 +10,8 @@ const Button = ({ children, className, ...props }: ButtonProps) => {
       className={cn(
         "inline-flex items-center justify-center rounded-lg px-4 py-3",
         "text-sm font-semibold transition-colors",
-        "bg-blue-600 text-white hover:bg-blue-700 ",
-        "disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-300",
+        "bg-blue-600 text-white hover:bg-blue-700",
+        "disabled:cursor-not-allowed disabled:bg-gray-300 disabled:opacity-50",
 
         className,
       )}

@@ -40,7 +40,7 @@ const Input = ({
       />
 
       {isError && errorMessage && (
-        <span className="ml-1 mt-0.5 text-xs text-red-500">{errorMessage}</span>
+        <span className="mt-0.5 ml-1 text-xs text-red-500">{errorMessage}</span>
       )}
     </div>
   );
