@@ -1,9 +1,34 @@
 import Button from "../../shared/components/Button";
 import Input from "../../shared/components/Input";
 import { useUserProfile } from "../../entities/user/hooks/use-user-profile";
+import { useUpdateUser } from "../../entities/user/hooks/use-update-user";
+
+import type { SubmitEvent } from "react";
 
 const MyPage = () => {
   const { userData } = useUserProfile();
+  const { updateUser, isUpdating } = useUpdateUser();
+
+  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const age = formData.get("age");
+
+    if (typeof name !== "string" || typeof email !== "string" || age === null) {
+      return;
+    }
+
+    const updateData = {
+      name,
+      email,
+      age: Number(age),
+    };
+
+    updateUser(updateData);
+  };
 
   return (
     <main className="flex flex-col items-center justify-center gap-8 p-8">
@@ -24,14 +49,27 @@ const MyPage = () => {
         </div>
       </section>
 
-      <form className="flex w-full max-w-96 flex-col gap-4">
+      <form
+        onSubmit={handleSubmit}
+        className="flex w-full max-w-96 flex-col gap-4"
+      >
         <div className="flex flex-col gap-3">
-          <Input label="이름" defaultValue="임시" />
-          <Input label="이메일" type="email" defaultValue="임시" />
-          <Input label="나이" type="number" defaultValue="24" />
+          <Input label="이름" name="name" defaultValue={userData?.name} />
+          <Input
+            label="이메일"
+            type="email"
+            name="email"
+            defaultValue={userData?.email}
+          />
+          <Input
+            label="나이"
+            type="number"
+            name="age"
+            defaultValue={userData?.age}
+          />
         </div>
 
-        <Button type="submit" className="mt-2">
+        <Button type="submit" className="mt-2" disabled={isUpdating}>
           정보 수정
         </Button>
       </form>

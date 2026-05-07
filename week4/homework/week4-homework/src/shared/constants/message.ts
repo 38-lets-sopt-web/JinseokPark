@@ -8,4 +8,8 @@ export const MESSAGE = {
   NAME_NOTICE: "이름은 10자 이내로 입력해주세요",
   EMAIL_NOTICE: "이메일 형식에 맞게 입력해주세요",
   MEMBER_PROFILE_ERROR: "멤버 정보를 조회하지 못했습니다.",
+  NO_LOGIN_DATA: "로그인 정보가 없습니다.",
+  PROFILE_EDIT_SUCCESS: "정보가 수정되었습니다!",
+  PROFILE_EDIT_FAILED: "수정 중 오류가 발생했습니다.",
+  EMAIL_INVALID_MESSAGE: "올바른 이메일 형식이 아닙니다.",
 };

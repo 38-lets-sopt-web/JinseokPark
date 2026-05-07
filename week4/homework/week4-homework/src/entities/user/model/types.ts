@@ -9,7 +9,7 @@ export interface User {
 
 export type UserSummary = Pick<User, "id" | "name" | "part">;
 
-export type UserUpdateRequest = Pick<User, "name" | "email" | "age" | "part">;
+export type UserUpdateRequest = Pick<User, "name" | "email" | "age">;
 
 interface BaseResponse<T> {
   success: boolean;
