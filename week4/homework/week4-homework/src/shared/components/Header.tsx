@@ -1,3 +1,6 @@
+import { useNavigate } from "react-router-dom";
+import { removeUserId } from "../utils/storage";
+
 import { Link } from "react-router-dom";
 
 interface HeaderProps {
@@ -5,6 +8,13 @@ interface HeaderProps {
 }
 
 const Header = ({ name = "SOPT" }: HeaderProps) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    removeUserId();
+    navigate("/login", { replace: true });
+  };
+
   return (
     <header className="flex w-full items-center justify-between bg-blue-500 px-8 py-4">
       <div className="flex flex-col gap-1">
@@ -19,7 +29,9 @@ const Header = ({ name = "SOPT" }: HeaderProps) => {
         <Link to="/mypage/members" className="hover:underline">
           회원 조회
         </Link>
-        <button className="hover:underline">로그아웃</button>
+        <button className="hover:underline" onClick={handleLogout}>
+          로그아웃
+        </button>
       </nav>
     </header>
   );
