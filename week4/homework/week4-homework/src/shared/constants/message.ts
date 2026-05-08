@@ -12,4 +12,5 @@ export const MESSAGE = {
   PROFILE_EDIT_SUCCESS: "정보가 수정되었습니다!",
   PROFILE_EDIT_FAILED: "수정 중 오류가 발생했습니다.",
   EMAIL_INVALID_MESSAGE: "올바른 이메일 형식이 아닙니다.",
+  MEMBER_LIST_LOAD_ERROR: "멤버 리스트를 불러오지 못했습니다.",
 };

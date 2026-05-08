@@ -8,6 +8,7 @@ import MemberCardList from "./components/MemberCardList";
 import type { SubmitEvent } from "react";
 
 import { useUserProfile } from "../../../entities/user/hooks/use-user-profile";
+import { useMemberList } from "../../../entities/user/hooks/use-member-list";
 
 const MemberListPage = () => {
   const [searchId, setSearchId] = useState<string>("");
@@ -15,20 +16,12 @@ const MemberListPage = () => {
   const { userData } = useUserProfile(
     targetId ? { userId: targetId } : undefined,
   );
+  const { memberList } = useMemberList();
 
   const handleSearch = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     setTargetId(Number(searchId));
   };
-
-  const mockMembers = [
-    { id: 1, name: "멤버 1", part: "Web" },
-    { id: 2, name: "멤버 2", part: "Web" },
-    { id: 3, name: "멤버 3", part: "Web" },
-    { id: 4, name: "멤버 4", part: "Web" },
-    { id: 5, name: "멤버 5", part: "Web" },
-    { id: 6, name: "멤버 6", part: "Web" },
-  ];
 
   return (
     <main className="flex flex-col items-center gap-12 p-8">
@@ -65,7 +58,7 @@ const MemberListPage = () => {
 
       <section className="flex w-full max-w-5xl flex-col gap-6">
         <h2 className="text-xl font-bold text-gray-900">전체 멤버</h2>
-        <MemberCardList members={mockMembers} />
+        <MemberCardList members={memberList ?? []} />
       </section>
     </main>
   );

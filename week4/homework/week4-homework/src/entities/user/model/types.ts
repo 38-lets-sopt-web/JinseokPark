@@ -24,4 +24,6 @@ interface BaseResponse<T> {
 }
 
 export type UserResponse = BaseResponse<User>;
-export type UserListResponse = BaseResponse<UserSummary[]>;
+export type UserListResponse = BaseResponse<{
+  users: UserSummary[];
+}>;
