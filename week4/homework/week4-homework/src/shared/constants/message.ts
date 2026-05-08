@@ -1,0 +1,16 @@
+export const MESSAGE = {
+  ERROR: "로그인에 실패했습니다.",
+  SIGN_UP_SUCCESS: "회원가입이 완료되었습니다!",
+  SIGN_UP_FAILED: "회원가입에 실패했습니다.",
+  ID_NOTICE: "아이디는 4자에서 20자 사이여야 합니다.",
+  PASSWORD_NOTICE: "공백 없이 영문, 숫자, 특수문자 포함 8~20자로 입력해주세요.",
+  PASSWORD_DISMATCH: "비밀번호가 일치하지 않습니다",
+  NAME_NOTICE: "이름은 10자 이내로 입력해주세요",
+  EMAIL_NOTICE: "이메일 형식에 맞게 입력해주세요",
+  MEMBER_PROFILE_ERROR: "멤버 정보를 조회하지 못했습니다.",
+  NO_LOGIN_DATA: "로그인 정보가 없습니다.",
+  PROFILE_EDIT_SUCCESS: "정보가 수정되었습니다!",
+  PROFILE_EDIT_FAILED: "수정 중 오류가 발생했습니다.",
+  EMAIL_INVALID_MESSAGE: "올바른 이메일 형식이 아닙니다.",
+  MEMBER_LIST_LOAD_ERROR: "멤버 리스트를 불러오지 못했습니다.",
+};
