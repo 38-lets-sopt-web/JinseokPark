@@ -4,5 +4,4 @@ export const ROUTES = {
   MYPAGE: "/mypage",
   MEMBER_LIST: "/mypage/members",
   MEMBER_DETAIL: "/mypage/members/:userId",
-  MEMBER_DETAIL_PATH: (userId: number) => `/mypage/members/${userId}`,
 } as const;
