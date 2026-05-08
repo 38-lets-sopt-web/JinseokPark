@@ -5,19 +5,22 @@ import type { User } from "../model/types";
 
 import { MESSAGE } from "../../../shared/constants/message";
 
-export const useUserProfile = () => {
-  const [userData, setUserData] = useState<User | null>(null);
+interface UseUserProfileParams {
+  userId: number;
+}
 
-  const userId = getUserId();
+export const useUserProfile = (params?: UseUserProfileParams) => {
+  const [userData, setUserData] = useState<User | null>(null);
+  const targetUserId = params?.userId ?? getUserId();
 
   useEffect(() => {
-    if (!userId) {
+    if (!targetUserId) {
       return;
     }
 
     const loadUser = async () => {
       try {
-        const response = await getUserProfile(userId);
+        const response = await getUserProfile(targetUserId);
         if (response.success && response.data) {
           setUserData(response.data);
         }
@@ -27,7 +30,7 @@ export const useUserProfile = () => {
     };
 
     loadUser();
-  }, [userId]);
+  }, [targetUserId]);
 
   return { userData };
 };
