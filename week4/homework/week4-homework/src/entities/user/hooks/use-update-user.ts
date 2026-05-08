@@ -20,6 +20,7 @@ export const useUpdateUser = () => {
       const response = await patchMyProfile(userId, updateData);
       if (response.success) {
         alert(MESSAGE.PROFILE_EDIT_SUCCESS);
+        location.reload();
       }
     } catch {
       alert(MESSAGE.PROFILE_EDIT_FAILED);
