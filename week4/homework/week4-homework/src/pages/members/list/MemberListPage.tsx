@@ -37,7 +37,7 @@ const MemberListPage = () => {
             value={searchId}
             onChange={(e) => setSearchId(e.target.value)}
           />
-          <Button className="w-full" type="submit">
+          <Button className="w-full" type="submit" disabled={!searchId}>
             검색
           </Button>
         </form>
